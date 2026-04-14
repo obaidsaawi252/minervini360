@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>مينرفيني ماركتس 360 — السوق السعودي تاسي ونمو</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+/* ══ THEME SYSTEM ════════════════════════════════════════════ */
+:root {
+  /* Gold — ثابت في الوضعين */
+  --g1:#c9981e;--g2:#d4a520;--g3:#e8bc30;--g4:#f5d050;--g5:#ffe878;
+  --glow:rgba(212,165,32,.18);--glow2:rgba(212,165,32,.08);
+  --grn:#00c87a;--red:#e03535;--blu:#2d7ee8;--purp:#7a4ee0;
+  /* Transition */
+  --transition: background .3s ease, color .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+/* ── الوضع الليلي (افتراضي) ─────────────────────────────── */
+:root, [data-theme="dark"] {
+  --b0:#06060b;--b1:#0b0b12;--b2:#10101a;--b3:#15151f;--b4:#1a1a28;--b5:#1f1f30;
+  --t1:#f0f0f8;--t2:#9898b8;--t3:#4a4a68;--t4:#28283a;
+  --brd:rgba(255,255,255,.07);--brd2:rgba(255,255,255,.13);--brd3:rgba(255,255,255,.2);
+  --shadow:rgba(0,0,0,.5);
+  --chart-bg:#07070c;
+  --nav-bg:rgba(6,6,11,.9);
+  --card-bg:var(--b2);
+  --input-bg:#0a0a18;
+  --hero-overlay:rgba(6,6,11,0);
+  --delay-bg:rgba(212,165,32,.08);
+  --delay-border:rgba(212,165,32,.2);
+}
+
+/* ── الوضع النهاري ──────────────────────────────────────── */
+[data-theme="light"] {
+  --b0:#f5f5f0;--b1:#eeede8;--b2:#ffffff;--b3:#f8f7f3;--b4:#eeecea;--b5:#e4e2de;
+  --t1:#1a1a2e;--t2:#4a4a6a;--t3:#8a8aaa;--t4:#c0bfdb;
+  --brd:rgba(0,0,0,.08);--brd2:rgba(0,0,0,.13);--brd3:rgba(0,0,0,.18);
+  --shadow:rgba(0,0,0,.12);
+  --chart-bg:#ffffff;
+  --nav-bg:rgba(255,255,255,.92);
+  --card-bg:#ffffff;
+  --input-bg:#f5f4f0;
+  --delay-bg:rgba(180,130,0,.07);
+  --delay-border:rgba(180,130,0,.2);
+  --glow:rgba(180,130,0,.15);--glow2:rgba(180,130,0,.07);
+  --g2:#b8880a;--g3:#c99010;--g4:#daa820;
+}
+html{scroll-behavior:smooth}
+body{background:var(--b0);color:var(--t1);font-family:'Cairo',sans-serif;direction:rtl;overflow-x:hidden;line-height:1.6;transition:var(--transition)}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--g2);border-radius:4px}
+
+/* GRAIN */
+body::after{content:'';position:fixed;inset:0;background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4t5eXl/f39ra2uRkZGPj4+NjY2JiYl+fn6AgICLi4uGhoaFhYWEhISCgoKGhoaGhoaFhYWDg4N1dXUwMTNFAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfZBgkQCxTIY1FMAAAAK0lEQVRIx2NgYGBgJCUlZWBgYGBiYmJiYGBgYmJiYmBgYGJiYmJiYGBgAAAEAAH/AAAAAElFTkSuQmCC");opacity:.03;pointer-events:none;z-index:9999}
+
+/* ══ NAV ══════════════════════════════════════════════════ */
+nav{position:fixed;top:0;inset-inline:0;z-index:500;height:62px;display:flex;align-items:center;padding:0 48px;background:var(--nav-bg);backdrop-filter:blur(24px) saturate(1.4);border-bottom:1px solid var(--brd2);transition:.3s}
+.n-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.n-icon{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#8a6a0a,var(--g4));display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;color:#06060b;box-shadow:0 0 22px var(--glow)}
+.n-name{font-size:15px;font-weight:800;letter-spacing:.05em;color:var(--t1)}
+.n-tag{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--g2);border:1px solid rgba(212,165,32,.45);border-radius:4px;padding:2px 8px;background:var(--glow2)}
+.n-links{display:flex;gap:2px;margin-right:28px}
+.n-link{padding:6px 15px;border-radius:7px;font-size:13px;font-weight:600;color:var(--t2);cursor:pointer;transition:.18s;border:1px solid transparent;text-decoration:none}
+.n-link:hover{color:var(--t1);background:var(--b4);border-color:var(--brd2)}
+.n-right{margin-right:auto;display:flex;align-items:center;gap:10px}
+.n-sub-links{display:flex;gap:2px}
+.n-sub{padding:6px 13px;border-radius:6px;font-size:12px;font-weight:600;color:var(--t2);cursor:pointer;transition:.18s;border:1px solid transparent;text-decoration:none;display:flex;align-items:center;gap:5px}
+.n-sub:hover{color:var(--t1);background:var(--b4)}
+.n-cta{padding:9px 22px;border-radius:7px;font-size:13px;font-weight:800;background:linear-gradient(135deg,var(--g2),var(--g4));color:#06060b;border:none;cursor:pointer;font-family:'Cairo',sans-serif;letter-spacing:.03em;transition:.2s;box-shadow:0 0 18px var(--glow)}
+.n-cta:hover{transform:translateY(-1px);box-shadow:0 4px 30px var(--glow)}
+
+/* ══ HERO ═════════════════════════════════════════════════ */
+#s-hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 40px 60px;position:relative;overflow:hidden}
+.h-bg{position:absolute;inset:0;background:radial-gradient(ellipse 90% 55% at 50% 0%,rgba(212,165,32,.2) 0%,transparent 65%),radial-gradient(ellipse 50% 35% at 15% 85%,rgba(212,165,32,.07) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 85% 70%,rgba(212,165,32,.06) 0%,transparent 60%)}
+.h-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(212,165,32,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(212,165,32,.05) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 85% 65% at 50% 40%,black,transparent)}
+.h-fire{position:absolute;top:0;inset-inline:0;height:300px;background:radial-gradient(ellipse 60% 100% at 50% 0%,rgba(255,180,0,.12),transparent);pointer-events:none}
+.h-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--glow2);border:1px solid rgba(212,165,32,.4);border-radius:20px;padding:6px 20px;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--g3);text-transform:uppercase;margin-bottom:30px;position:relative;z-index:1}
+.h-title{font-size:clamp(44px,7vw,96px);font-weight:900;line-height:1.0;letter-spacing:-.025em;color:var(--t1);position:relative;z-index:1;margin-bottom:14px}
+.h-gold{display:block;background:linear-gradient(90deg,var(--g2) 0%,var(--g4) 30%,var(--g5) 50%,var(--g4) 70%,var(--g2) 100%);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shine 4s linear infinite}
+@keyframes shine{to{background-position:-200% center}}
+.h-free{display:inline-block;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--t2);letter-spacing:.02em;margin-bottom:6px;position:relative;z-index:1}
+.h-free span{color:var(--g3)}
+.h-access{font-size:clamp(11px,1.5vw,15px);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--t3);margin-bottom:36px;position:relative;z-index:1}
+.h-sub{font-size:clamp(15px,1.8vw,19px);color:var(--t2);max-width:620px;line-height:1.75;margin:0 auto 44px;position:relative;z-index:1}
+.h-sub b{color:var(--g3);font-weight:700}
+.h-btns{display:flex;gap:14px;justify-content:center;position:relative;z-index:1;margin-bottom:70px;flex-wrap:wrap}
+.btn-g{padding:16px 42px;border-radius:9px;font-size:15px;font-weight:800;background:linear-gradient(135deg,var(--g1),var(--g3));color:#06060b;border:none;cursor:pointer;font-family:'Cairo',sans-serif;letter-spacing:.04em;transition:.22s;box-shadow:0 0 36px var(--glow)}
+.btn-g:hover{transform:translateY(-2px);box-shadow:0 8px 48px var(--glow)}
+.btn-o{padding:15px 40px;border-radius:9px;font-size:15px;font-weight:700;background:transparent;color:var(--t1);border:1px solid var(--brd3);cursor:pointer;font-family:'Cairo',sans-serif;transition:.22s}
+.btn-o:hover{background:var(--b4);border-color:var(--g2);color:var(--g2)}
+
+/* hero mockup */
+.h-mockup{position:relative;z-index:1;width:100%;max-width:1060px;border-radius:18px;overflow:hidden;border:1px solid rgba(212,165,32,.3);box-shadow:0 0 100px rgba(212,165,32,.14),0 60px 140px rgba(0,0,0,.9);animation:floatUp 1s .2s both}
+@keyframes floatUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+.mk-bar{background:#0c0c16;border-bottom:1px solid rgba(255,255,255,.07);padding:10px 18px;display:flex;align-items:center;gap:10px}
+.mk-dot{width:11px;height:11px;border-radius:50%}
+.mk-url{flex:1;background:rgba(255,255,255,.05);border-radius:6px;height:24px;display:flex;align-items:center;padding:0 12px;margin:0 24px}
+.mk-url span{font-size:11px;color:var(--t3)}
+.mk-live{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:700;color:var(--red);background:rgba(255,63,63,.1);border:1px solid rgba(255,63,63,.3);border-radius:20px;padding:3px 10px}
+.mk-live-dot{width:5px;height:5px;border-radius:50%;background:var(--red);animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.15}}
+.mk-body{background:#080810;display:grid;grid-template-columns:195px 1fr 215px;min-height:340px}
+/* mock sidebar */
+.mk-sb{background:#0c0c18;border-inline-end:1px solid rgba(255,255,255,.06);padding:10px 7px}
+.mk-sb-label{font-size:9px;font-weight:700;letter-spacing:.12em;color:var(--t3);text-transform:uppercase;padding:6px 7px 4px}
+.mk-row{display:flex;align-items:center;justify-content:space-between;padding:6px 9px;border-radius:7px;cursor:default;margin-bottom:1px;transition:.1s}
+.mk-row:hover,.mk-row.on{background:rgba(212,165,32,.1)}
+.mk-row.on{border:1px solid rgba(212,165,32,.2)}
+.mk-tk{font-size:12px;font-weight:700}
+.mk-nm{font-size:9px;color:var(--t3);margin-top:1px}
+.mk-chg{font-size:10px;font-weight:800}.up{color:var(--grn)}.dn{color:var(--red)}
+/* mock center */
+.mk-center{padding:14px 16px;display:flex;flex-direction:column}
+.mk-sym-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.mk-sym{font-size:22px;font-weight:900;letter-spacing:-.01em}
+.mk-company{font-size:10px;color:var(--t2);margin-top:2px}
+.mk-vcp-tag{font-size:9px;font-weight:700;letter-spacing:.05em;background:var(--glow2);border:1px solid rgba(212,165,32,.35);color:var(--g3);padding:3px 9px;border-radius:20px;margin-top:5px;display:inline-block}
+.mk-price{font-size:24px;font-weight:900;color:var(--g3);line-height:1}
+.mk-pchg{font-size:11px;font-weight:800;background:rgba(0,224,138,.1);border:1px solid rgba(0,224,138,.3);color:var(--grn);padding:3px 10px;border-radius:20px;display:inline-block;margin-top:5px}
+.mk-canvas-wrap{flex:1;position:relative;min-height:150px}
+.mk-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:8px}
+.mk-met{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:6px;text-align:center}
+.mk-ml{font-size:8px;color:var(--t3);letter-spacing:.05em;text-transform:uppercase;margin-bottom:2px}
+.mk-mv{font-size:14px;font-weight:900}
+/* mock right */
+.mk-right{background:#0c0c18;border-inline-start:1px solid rgba(255,255,255,.06);padding:10px 10px}
+.mk-alert{background:rgba(0,0,0,.3);border-radius:7px;padding:8px 10px;margin-bottom:6px;border-inline-end:3px solid}
+.mk-atag{font-size:8px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-bottom:2px}
+.mk-abody{font-size:10px;color:var(--t2);line-height:1.4}
+.mk-rs-row{display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.mk-rs-tk{font-size:11px;font-weight:700;width:44px}
+.mk-rs-bw{flex:1;height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
+.mk-rs-bf{height:100%;border-radius:2px}
+.mk-rs-n{font-size:10px;font-weight:800;width:22px;text-align:left}
+
+/* ══ QUOTE RIBBON ════════════════════════════════════════ */
+.ribbon{background:var(--b1);border-top:1px solid var(--brd2);border-bottom:1px solid var(--brd2);padding:0;overflow:hidden;height:44px;display:flex;align-items:center}
+.ribbon-track{display:flex;gap:48px;animation:scroll 28s linear infinite;white-space:nowrap;padding:0 24px}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.ribbon-item{font-size:12px;font-weight:600;display:flex;align-items:center;gap:8px;color:var(--t2)}
+.ribbon-item .tk{color:var(--t1);font-weight:800}
+.ribbon-item .pct{font-weight:800;font-size:11px}
+
+/* ══ STATS BAR ══════════════════════════════════════════ */
+.stats{background:var(--b1);border-bottom:1px solid var(--brd);padding:50px 60px;display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{text-align:center;padding:10px;border-inline-end:1px solid var(--brd)}
+.stat:last-child{border:none}
+.stat-n{font-size:clamp(34px,4vw,54px);font-weight:900;color:var(--g3);letter-spacing:-.02em;line-height:1}
+.stat-l{font-size:13px;color:var(--t2);margin-top:7px;font-weight:500;line-height:1.4}
+
+/* ══ SECTION SHARED ════════════════════════════════════= */
+.sec{position:relative;z-index:1}
+.sec-wrap{max-width:1140px;margin:0 auto;padding:110px 48px}
+.eyebrow{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--g2);text-transform:uppercase;background:var(--glow2);border:1px solid rgba(212,165,32,.32);border-radius:20px;padding:5px 17px;margin-bottom:20px}
+.sec-h{font-size:clamp(28px,4vw,54px);font-weight:900;line-height:1.08;letter-spacing:-.02em;color:var(--t1);margin-bottom:18px}
+.sec-p{font-size:16px;color:var(--t2);line-height:1.85;max-width:580px}
+.gold{color:var(--g3);font-weight:700}
+
+/* ══ PRIVATE ACCESS SECTION ════════════════════════════ */
+#s-mpa{background:var(--b0)}
+.mpa-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:70px}
+.mpa-card{background:var(--b2);border:1px solid var(--brd2);border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.mpa-card-top{background:linear-gradient(160deg,var(--b3),var(--b4));padding:28px 28px 0}
+.mpa-card-img{width:100%;height:220px;background:linear-gradient(135deg,var(--b4),var(--b5));border-radius:10px 10px 0 0;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.mpa-chart-wrap{width:100%;height:100%;position:relative}
+.mpa-card-body{padding:24px 28px}
+.mpa-checks{margin-top:14px;display:flex;flex-direction:column;gap:10px}
+.mpa-check{display:flex;align-items:flex-start;gap:12px}
+.chk-ic{width:22px;height:22px;border-radius:50%;background:rgba(0,224,138,.12);border:1px solid rgba(0,224,138,.4);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--grn);flex-shrink:0;margin-top:1px}
+.chk-t{font-size:13px;color:var(--t1);font-weight:600}
+.chk-s{font-size:12px;color:var(--t2)}
+.mpa-btns{display:flex;gap:10px;margin-top:28px}
+
+/* ══ PORTFOLIO SECTION ══════════════════════════════════ */
+#s-portfolio{background:var(--b1)}
+.port-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;margin-top:70px}
+.port-mockup{background:var(--b2);border:1px solid var(--brd2);border-radius:16px;overflow:hidden;box-shadow:0 20px 70px rgba(0,0,0,.6)}
+.port-top{background:var(--b3);border-bottom:1px solid var(--brd);padding:12px 18px;display:flex;align-items:center;gap:10px}
+.port-title{font-size:12px;font-weight:700;color:var(--t1)}
+.port-live{margin-right:auto;display:flex;align-items:center;gap:5px;font-size:10px;font-weight:700;color:var(--grn)}
+.port-body{padding:16px}
+.port-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.ps-card{background:var(--b4);border:1px solid var(--brd);border-radius:8px;padding:12px;text-align:center}
+.ps-l{font-size:9px;font-weight:700;letter-spacing:.08em;color:var(--t3);text-transform:uppercase;margin-bottom:4px}
+.ps-v{font-size:18px;font-weight:900}
+.port-chart-wrap{height:140px;position:relative;margin-bottom:14px}
+.port-table{}
+.pt-hdr,.pt-row{display:grid;grid-template-columns:55px 1fr 65px 65px 55px;gap:6px;padding:7px 4px;font-size:11px;align-items:center}
+.pt-hdr{font-size:9px;font-weight:700;letter-spacing:.08em;color:var(--t3);text-transform:uppercase;border-bottom:1px solid var(--brd)}
+.pt-row{border-bottom:1px solid var(--brd)}
+.pt-row:last-child{border:none}
+
+/* ══ SCREENER SECTION ═══════════════════════════════════ */
+#s-screener{background:var(--b0)}
+.scr-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;margin-top:70px}
+.scr-mockup{background:var(--b2);border:1px solid var(--brd2);border-radius:16px;overflow:hidden;box-shadow:0 20px 70px rgba(0,0,0,.6)}
+.scr-top{background:var(--b3);border-bottom:1px solid var(--brd);padding:12px 18px;display:flex;align-items:center;gap:8px}
+.scr-filters{display:flex;gap:6px;flex-wrap:wrap;padding:12px 14px;border-bottom:1px solid var(--brd)}
+.scr-sel{background:var(--b4);border:1px solid var(--brd2);color:var(--t1);border-radius:6px;padding:5px 10px;font-size:11px;font-family:'Cairo',sans-serif}
+.scr-run{background:var(--g2);color:#06060b;border:none;border-radius:6px;padding:6px 14px;font-size:11px;font-weight:800;cursor:pointer;font-family:'Cairo',sans-serif;margin-right:auto}
+.scr-table{}
+.scr-hdr,.scr-row{display:grid;grid-template-columns:56px 1fr 64px 58px 50px 64px;gap:6px;padding:8px 14px;font-size:11px;align-items:center}
+.scr-hdr{font-size:9px;font-weight:700;letter-spacing:.08em;color:var(--t3);text-transform:uppercase;background:var(--b3)}
+.scr-row{border-bottom:1px solid var(--brd);cursor:pointer;transition:.1s}
+.scr-row:hover{background:var(--b3)}
+.scr-row:last-child{border:none}
+.rs-pill{padding:2px 8px;border-radius:20px;font-size:9px;font-weight:800;text-align:center}
+.vcp-dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+/* ══ MAI SECTION ════════════════════════════════════════ */
+#s-ai{background:linear-gradient(180deg,var(--b1) 0%,var(--b0) 100%)}
+.ai-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start;margin-top:70px}
+.ai-chat{background:var(--b2);border:1px solid var(--brd2);border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.ai-chat-hdr{background:var(--b3);border-bottom:1px solid var(--brd);padding:13px 18px;display:flex;align-items:center;gap:10px}
+.ai-ava{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g4));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#06060b}
+.ai-nm{font-size:13px;font-weight:700}
+.ai-st{font-size:10px;color:var(--grn);display:flex;align-items:center;gap:4px}
+.ai-st::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--grn)}
+.ai-msgs{padding:16px;display:flex;flex-direction:column;gap:10px;max-height:340px;overflow-y:auto}
+.msg{padding:10px 14px;border-radius:10px;font-size:12px;line-height:1.65;max-width:87%}
+.msg-u{background:var(--glow2);border:1px solid rgba(212,165,32,.22);color:var(--t1);align-self:flex-start}
+.msg-a{background:rgba(255,255,255,.04);border:1px solid var(--brd2);color:var(--t2);align-self:flex-end}
+.msg-a strong{color:var(--g3)}
+.ai-inp-row{border-top:1px solid var(--brd);padding:12px 16px;display:flex;gap:8px}
+.ai-inp{flex:1;background:var(--b4);border:1px solid var(--brd2);border-radius:7px;padding:8px 12px;font-size:12px;color:var(--t1);font-family:'Cairo',sans-serif}
+.ai-inp::placeholder{color:var(--t3)}
+.ai-send{background:var(--g2);color:#06060b;border:none;border-radius:7px;padding:8px 14px;font-size:11px;font-weight:800;cursor:pointer;font-family:'Cairo',sans-serif;transition:.15s}
+.ai-send:hover{background:var(--g4)}
+.ai-features{display:flex;flex-direction:column;gap:14px}
+.ai-feat{display:flex;align-items:flex-start;gap:16px;padding:18px 20px;background:var(--b2);border:1px solid var(--brd2);border-radius:12px;transition:.2s}
+.ai-feat:hover{border-color:rgba(212,165,32,.3);background:var(--b3)}
+.af-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.af-title{font-size:15px;font-weight:700;color:var(--t1);margin-bottom:4px}
+.af-desc{font-size:13px;color:var(--t2);line-height:1.6}
+
+/* ══ CHARTING SECTION ═══════════════════════════════════ */
+#s-charting{background:var(--b0)}
+.chart-showcase{background:var(--b2);border:1px solid rgba(212,165,32,.22);border-radius:18px;overflow:hidden;margin-top:60px;box-shadow:0 40px 100px rgba(0,0,0,.75)}
+.cs-hdr{background:var(--b3);border-bottom:1px solid var(--brd2);padding:12px 20px;display:flex;align-items:center;gap:14px}
+.cs-sym{font-size:16px;font-weight:900}
+.cs-price{font-size:18px;font-weight:900;color:var(--g3)}
+.cs-pchg{font-size:11px;font-weight:800;color:var(--grn);background:rgba(0,224,138,.1);border:1px solid rgba(0,224,138,.25);padding:2px 9px;border-radius:20px}
+.cs-vcp{font-size:10px;font-weight:700;color:var(--g2);background:var(--glow2);border:1px solid rgba(212,165,32,.3);padding:3px 10px;border-radius:20px;margin-right:auto}
+.cs-tabs{display:flex;gap:3px}
+.cs-tab{padding:4px 12px;border-radius:5px;font-size:11px;font-weight:700;cursor:pointer;border:1px solid var(--brd2);background:transparent;color:var(--t3);font-family:'Cairo',sans-serif;transition:.13s}
+.cs-tab.on,.cs-tab:hover{background:var(--g2);color:#06060b;border-color:var(--g2)}
+.cs-body{display:grid;grid-template-columns:1fr 230px}
+.cs-chart-wrap{padding:16px;height:280px;position:relative;border-inline-end:1px solid var(--brd)}
+.cs-meta{padding:16px;display:flex;flex-direction:column;gap:8px}
+.cs-met{background:var(--b3);border:1px solid var(--brd);border-radius:8px;padding:11px 14px}
+.cs-ml{font-size:9px;font-weight:700;letter-spacing:.09em;color:var(--t3);text-transform:uppercase;margin-bottom:4px}
+.cs-mv{font-size:18px;font-weight:900}
+.cs-legend{padding:0 16px 12px;display:flex;gap:16px;flex-wrap:wrap}
+.cs-leg-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--t3)}
+.cs-leg-line{width:18px;height:2px;border-radius:1px}
+
+/* ══ MONALERT SECTION ═══════════════════════════════════ */
+#s-monalert{background:var(--b1)}
+.mon-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start;margin-top:70px}
+.mon-feed{display:flex;flex-direction:column;gap:8px}
+.mon-item{background:var(--b2);border:1px solid var(--brd2);border-radius:10px;overflow:hidden;border-inline-end:4px solid;padding:14px 16px;transition:.2s}
+.mon-item:hover{transform:translateX(-4px)}
+.mi-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
+.mi-tag{font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+.mi-time{font-size:10px;color:var(--t3)}
+.mi-body{font-size:13px;color:var(--t2);line-height:1.55}
+.mi-tk{font-weight:800;color:var(--t1)}
+
+/* ══ TRADE GRADER ═══════════════════════════════════════ */
+#s-grader{background:var(--b0)}
+.grader-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;margin-top:70px}
+.grader-card{background:var(--b2);border:1px solid var(--brd2);border-radius:16px;overflow:hidden;box-shadow:0 20px 70px rgba(0,0,0,.6)}
+.gc-hdr{background:var(--b3);border-bottom:1px solid var(--brd);padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
+.gc-title{font-size:12px;font-weight:700}
+.gc-body{padding:16px}
+.trade-grade-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--brd)}
+.trade-grade-row:last-child{border:none}
+.tgr-tk{font-size:13px;font-weight:800;width:56px}
+.tgr-info{flex:1}
+.tgr-setup{font-size:11px;color:var(--t2)}
+.tgr-ret{font-size:12px;font-weight:800}
+.tgr-r{font-size:11px;font-weight:700;color:var(--t2);margin-top:1px}
+.grade-badge{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;flex-shrink:0}
+
+/* ══ NEWS SECTION ═══════════════════════════════════════ */
+#s-news{background:var(--b1)}
+.news-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start;margin-top:70px}
+.news-feed{display:flex;flex-direction:column;gap:8px}
+.news-item{background:var(--b2);border:1px solid var(--brd);border-radius:10px;padding:14px 16px;cursor:pointer;transition:.15s}
+.news-item:hover{border-color:rgba(212,165,32,.3);background:var(--b3)}
+.ni-cat{font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;margin-bottom:5px}
+.ni-title{font-size:13px;font-weight:700;color:var(--t1);line-height:1.5;margin-bottom:4px}
+.ni-meta{font-size:10px;color:var(--t3)}
+
+/* ══ LOGGER ═════════════════════════════════════════════ */
+#s-logger{background:var(--b0)}
+.logger-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:60px 0 24px}
+.ls{background:var(--b2);border:1px solid var(--brd2);border-radius:12px;padding:22px;text-align:center;transition:.2s}
+.ls:hover{border-color:rgba(212,165,32,.3)}
+.ls-v{font-size:32px;font-weight:900;margin-bottom:5px}
+.ls-l{font-size:12px;color:var(--t2);font-weight:500}
+.logger-table{background:var(--b2);border:1px solid var(--brd2);border-radius:12px;overflow:hidden}
+.lt-hdr,.lt-row{display:grid;grid-template-columns:62px 1fr 80px 80px 70px 55px 68px;gap:8px;padding:10px 16px;align-items:center;font-size:12px}
+.lt-hdr{background:var(--b3);font-size:9px;font-weight:700;letter-spacing:.08em;color:var(--t3);text-transform:uppercase;border-bottom:1px solid var(--brd2)}
+.lt-row{border-bottom:1px solid var(--brd);cursor:pointer;transition:.12s}
+.lt-row:hover{background:var(--b3)}
+.lt-row:last-child{border:none}
+
+/* ══ TESTIMONIALS ═══════════════════════════════════════ */
+#s-quotes{background:var(--b1)}
+.quotes-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:60px}
+.quote-card{background:var(--b2);border:1px solid var(--brd2);border-radius:16px;padding:32px;transition:.2s}
+.quote-card:hover{border-color:rgba(212,165,32,.3);transform:translateY(-3px)}
+.quote-card.featured{border-color:rgba(212,165,32,.35);background:linear-gradient(160deg,var(--b2),rgba(212,165,32,.04))}
+.quote-stars{color:var(--g3);font-size:18px;margin-bottom:16px;letter-spacing:2px}
+.quote-text{font-size:15px;color:var(--t2);line-height:1.85;font-style:italic;margin-bottom:20px}
+.quote-text em{color:var(--g3);font-style:normal;font-weight:700}
+.quote-author{display:flex;align-items:center;gap:12px}
+.qa-ava{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#06060b;flex-shrink:0}
+.qa-name{font-size:14px;font-weight:700;color:var(--t1)}
+.qa-role{font-size:12px;color:var(--t3)}
+.expert-quotes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.eq-card{background:var(--b3);border:1px solid rgba(212,165,32,.2);border-radius:14px;padding:24px;position:relative;overflow:hidden}
+.eq-card::before{content:'"';position:absolute;top:-10px;left:16px;font-size:80px;color:rgba(212,165,32,.12);font-family:Georgia,serif;line-height:1}
+.eq-text{font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:16px;font-style:italic;position:relative;z-index:1}
+.eq-author{font-size:13px;font-weight:700;color:var(--g3);position:relative;z-index:1}
+.eq-role{font-size:11px;color:var(--t3);margin-top:2px;position:relative;z-index:1}
+
+/* ══ GALA SECTION ════════════════════════════════════════ */
+#s-gala{background:linear-gradient(180deg,var(--b0) 0%,var(--b1) 100%)}
+.gala-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:50px}
+.gala-img{border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:var(--b3);border:1px solid var(--brd2);display:flex;align-items:center;justify-content:center;font-size:28px;transition:.2s;cursor:pointer}
+.gala-img:hover{transform:scale(1.02);border-color:rgba(212,165,32,.3)}
+
+/* ══ PRICING ════════════════════════════════════════════ */
+#s-pricing{background:var(--b0)}
+.pricing-wrap{max-width:1000px;margin:0 auto;padding:110px 48px;text-align:center}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:60px;align-items:start}
+.pc{background:var(--b2);border:1px solid var(--brd2);border-radius:18px;padding:34px 28px;position:relative;overflow:hidden;transition:.25s}
+.pc:hover{transform:translateY(-4px)}
+.pc.star{border-color:rgba(212,165,32,.5);background:linear-gradient(160deg,var(--b2),rgba(212,165,32,.05));box-shadow:0 0 80px rgba(212,165,32,.1)}
+.pc-pop{position:absolute;top:0;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--g1),var(--g4));color:#06060b;font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;padding:5px 18px;border-radius:0 0 9px 9px}
+.pc-plan{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);margin-bottom:18px}
+.pc-amt{font-size:52px;font-weight:900;line-height:1;color:var(--t1)}
+.pc-amt sup{font-size:24px;color:var(--t2)}
+.pc-period{font-size:12px;color:var(--t3);margin-top:5px;margin-bottom:14px}
+.pc-save{display:inline-block;font-size:11px;font-weight:700;color:var(--grn);background:rgba(0,224,138,.1);border:1px solid rgba(0,224,138,.3);border-radius:20px;padding:3px 12px;margin-bottom:20px}
+.pc-features{display:flex;flex-direction:column;gap:9px;text-align:right;margin-bottom:24px}
+.pf{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--t2)}
+.pf::before{content:'✓';color:var(--grn);font-weight:900;font-size:12px;flex-shrink:0}
+.pc-btn{width:100%;padding:13px;border-radius:8px;font-size:14px;font-weight:800;cursor:pointer;font-family:'Cairo',sans-serif;transition:.2s}
+.pc-btn-g{background:linear-gradient(135deg,var(--g1),var(--g3));color:#06060b;border:none}
+.pc-btn-g:hover{box-shadow:0 0 28px var(--glow);transform:translateY(-1px)}
+.pc-btn-o{background:transparent;color:var(--t1);border:1px solid var(--brd2)}
+.pc-btn-o:hover{border-color:var(--g2);color:var(--g2)}
+
+/* ══ FAQ ════════════════════════════════════════════════ */
+#s-faq{background:var(--b1)}
+.faq-wrap{max-width:740px;margin:0 auto;padding:110px 48px}
+.faq-list{margin-top:50px;display:flex;flex-direction:column;gap:8px}
+.fq{background:var(--b2);border:1px solid var(--brd);border-radius:11px;overflow:hidden}
+.fq-q{padding:18px 22px;font-size:14px;font-weight:700;color:var(--t1);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:.18s;gap:12px;line-height:1.4}
+.fq-q:hover{color:var(--g2)}
+.fq-ic{width:24px;height:24px;border-radius:50%;background:var(--glow2);border:1px solid rgba(212,165,32,.3);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--g2);flex-shrink:0;transition:.3s}
+.fq.open .fq-ic{transform:rotate(45deg)}
+.fq-a{max-height:0;overflow:hidden;font-size:13px;color:var(--t2);line-height:1.8;transition:.35s ease}
+.fq.open .fq-a{max-height:250px;padding:0 22px 18px}
+
+/* ══ FINAL CTA ══════════════════════════════════════════ */
+#s-cta{background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(212,165,32,.15) 0%,transparent 70%),var(--b0);text-align:center}
+.cta-wrap{max-width:800px;margin:0 auto;padding:120px 48px}
+.cta-h{font-size:clamp(32px,5vw,62px);font-weight:900;line-height:1.08;letter-spacing:-.02em;margin-bottom:22px}
+.cta-sub{font-size:18px;color:var(--t2);margin-bottom:44px;line-height:1.75}
+
+/* ══ FOOTER ══════════════════════════════════════════════ */
+footer{background:var(--b1);border-top:1px solid var(--brd2);padding:70px 60px 36px}
+.ft-grid{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:50px;margin-bottom:56px}
+.ft-brand p{font-size:13px;color:var(--t3);margin-top:14px;line-height:1.75;max-width:300px}
+.ft-col h5{font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--t2);margin-bottom:18px}
+.ft-col a{display:block;font-size:13px;color:var(--t3);text-decoration:none;margin-bottom:9px;transition:.15s}
+.ft-col a:hover{color:var(--g2)}
+.ft-bottom{max-width:1140px;margin:0 auto;border-top:1px solid var(--brd);padding-top:26px;display:flex;justify-content:space-between;align-items:center}
+.ft-copy{font-size:12px;color:var(--t3)}
+.ft-legal{display:flex;gap:20px}
+.ft-legal a{font-size:12px;color:var(--t3);text-decoration:none}
+.ft-legal a:hover{color:var(--g2)}
+
+/* ══ ANIMATIONS ══════════════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .75s ease,transform .75s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(36px);transition:opacity .75s ease,transform .75s ease}
+.reveal-left.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="n-logo" href="#">
+    <div class="n-icon">M</div>
+    <span class="n-name">مينرفيني</span>
+    <span class="n-tag">ماركتس 360</span>
+  </a>
+  <div class="n-links">
+    <a class="n-link" href="#s-mpa">الوصول الخاص</a>
+    <a class="n-link" href="#s-portfolio">المحفظة</a>
+    <a class="n-link" href="#s-screener">الفلترة</a>
+    <a class="n-link" href="#s-ai">مينرفيني AI</a>
+    <a class="n-link" href="#s-charting">الرسوم البيانية</a>
+    <a class="n-link" href="#s-pricing">الأسعار</a>
+  </div>
+  <div class="n-right">
+    <div class="n-sub-links">
+      <a class="n-sub" href="#s-mpa">🔑 Private Access</a>
+      <a class="n-sub" href="#">📚 ورشة 2026</a>
+      <a class="n-sub" href="#">💊 Trader Rehab</a>
+    </div>
+    <button class="n-cta">سجّل الآن</button>
+    <button class="theme-toggle" onclick="toggleTheme()" title="تبديل الوضع النهاري/الليلي">
+      <span class="tt-label-dark">🌙 ليلي</span>
+      <span class="tt-label-light">☀️ نهاري</span>
+      <div class="tt-track">
+        <div class="tt-thumb">
+          <span class="tt-label-dark" style="font-size:9px">🌙</span>
+          <span class="tt-label-light" style="font-size:9px">☀️</span>
+        </div>
+      </div>
+    </button>
+  </div>
+</nav>
+<style>
+#sbar{background:#0c0c1a;border-bottom:1px solid rgba(201,160,32,.18);padding:8px 24px;display:flex;align-items:center;gap:12px;font-size:11px;direction:rtl;font-family:'Cairo',sans-serif;flex-wrap:wrap;z-index:499}
+.s-pulse{width:8px;height:8px;border-radius:50%;background:#00c87a;flex-shrink:0;animation:spl 2s infinite}
+@keyframes spl{50%{opacity:.3}}
+#s-txt{color:#c9a020;font-weight:700}
+#s-det{color:#4a4a68;font-size:10px}
+#s-time{margin-right:auto;color:#4a4a68;font-size:10px}
+#s-mkt{padding:2px 12px;border-radius:20px;font-size:10px;font-weight:700}
+.mkt-o{background:rgba(0,200,122,.12);border:1px solid rgba(0,200,122,.3);color:#00c87a}
+.mkt-c{background:rgba(224,53,53,.1);border:1px solid rgba(224,53,53,.25);color:#e03535}
+.ribbon{background:var(--b1);border-top:1px solid var(--brd2);border-bottom:1px solid var(--brd2);padding:0;overflow:hidden;height:44px;display:flex;align-items:center}
+.ribbon-track{display:flex;gap:48px;animation:scroll 28s linear infinite;white-space:nowrap;padding:0 24px}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.ribbon-item{font-size:12px;font-weight:600;display:flex;align-items:center;gap:8px;color:var(--t2)}
+.ribbon-item .tk{color:var(--t1);font-weight:800}
+.up{color:#00c87a}.dn{color:#e03535}
+</style>
+<div id="sbar">
+  <div class="s-pulse" id="s-pulse"></div>
+  <span id="s-txt">جارٍ جلب الأسعار من سهمك...</span>
+  <span id="s-det"></span>
+  <span id="s-time"></span>
+  <span id="s-mkt">...</span>
+</div>
+<div class="ribbon"><div class="ribbon-track" id="ribbon"></div></div>
+<script>
+(function(){
+var _KEY = 'shmk_test_f91fa1b81c551850b82b02360300131ec075b4f03fdec743';
+var _BASE = 'https://app.sahmk.sa/api/v1';
+var _cache = {};
+var _timer = null;
+
+async function _fetch(sym) {
+  var clean = sym.replace('.SR','').replace('^','');
+  var url = (clean==='TASI'||clean==='NOMU')
+    ? _BASE+'/market/summary/?index='+clean
+    : _BASE+'/quote/'+clean+'/';
+  try {
+    var r = await fetch(url, {headers:{'X-API-Key':_KEY,'Accept':'application/json'}});
+    if (!r.ok) throw new Error(r.status);
+    var d = await r.json();
+    var q = (clean==='TASI'||clean==='NOMU') ? {
+      price:d.index_value, chg:d.index_change_percent,
+      change:d.index_change, vol:d.total_volume
+    } : {
+      price:d.price, chg:d.change_percent||0,
+      change:d.change||0, vol:d.volume||0,
+      open:d.open, high:d.high, low:d.low,
+      name:d.name||d.name_en||clean
+    };
+    _cache[clean] = q;
+    window._sahmkPrices = _cache;
+    return q;
+  } catch(e) {
+    console.error('❌ فشل جلب '+clean+':', e.message);
+    return null;
+  }
+}
+
+function _updateBar() {
+  var t=_cache.TASI;
+  var pulse=document.getElementById('s-pulse'),
+      txt=document.getElementById('s-txt'),
+      det=document.getElementById('s-det'),
+      tm=document.getElementById('s-time'),
+      mkt=document.getElementById('s-mkt');
+  var now=new Date().toLocaleTimeString('ar-SA',{hour:'2-digit',minute:'2-digit'});
+  if (t&&t.price!=null) {
+    var up=t.chg>=0;
+    txt.innerHTML='تاسي: <b>'+t.price.toFixed(2)+'</b> <span class="'+(up?'up':'dn')+'">'+(up?'▲':'▼')+' '+t.chg.toFixed(2)+'%</span>';
+    det.textContent='✅ SAHMK مباشر';
+    pulse.style.background='#00c87a';
+  } else {
+    txt.textContent='⚠️ تعذر جلب الأسعار';
+    pulse.style.background='#e03535';
+  }
+  tm.textContent='آخر تحديث: '+now;
+  var h=(new Date().getHours()+3)%24;
+  var open=h>=10&&h<15;
+  mkt.className=open?'mkt-o':'mkt-c';
+  mkt.textContent=open?'السوق مفتوح':'السوق مغلق';
+  _updateRibbon();
+}
+
+function _updateRibbon() {
+  var track=document.getElementById('ribbon');if(!track)return;
+  var syms=['TASI','2222','1120','1180','1211','2082','7010','4003','1010','2010','6004','7203'];
+  var html=syms.map(function(s){
+    var q=_cache[s];if(!q||q.price==null)return'';
+    var up=q.chg>=0;
+    return '<div class="ribbon-item"><span class="tk">'+s+'</span><span>'+q.price.toFixed(2)+'</span><span class="pct '+(up?'up':'dn')+'">'+(up?'▲':'▼')+' '+Math.abs(q.chg).toFixed(2)+'%</span></div>';
+  }).join('');
+  if(html) track.innerHTML=html+html;
+}
+
+async function _refresh() {
+  var syms=['TASI','NOMU','2222','1120','1180','1211','2082','7010','4003','1010','2010','1111','4190','6004','7203','8010','1060','1150','1080','1140'];
+  for(var i=0;i<syms.length;i++){
+    await _fetch(syms[i]);
+    await new Promise(function(r){setTimeout(r,120);});
+  }
+  _updateBar();
+  if(window._curSym&&_cache[window._curSym]&&window._sahmkUpdateSidebar){
+    window._sahmkUpdateSidebar(window._curSym);
+  }
+}
+
+function _start(){
+  if(_timer)clearInterval(_timer);
+  _refresh();
+  _timer=setInterval(_refresh,30000);
+}
+
+window.addEventListener('load',_start);
+})();
+</script>
+
+<!-- HERO -->
+<section id="s-hero">
+  <div class="h-bg"></div>
+  <div class="h-grid"></div>
+  <div class="h-fire"></div>
+  <div class="h-eyebrow">انضم إلى فريق الأبطال</div>
+  <h1 class="h-title">
+    <span class="h-gold">المنصة الأقوى</span>
+    على وجه الأرض
+  </h1>
+  <div class="h-free">مجاناً <span>مع عضوية مينرفيني Private Access</span></div>
+  <div class="h-access">حيث تبدأ المكاسب المتفجرة</div>
+  <p class="h-sub">استغل الحكمة الجماعية والأدوات الاحترافية لإرث تداول لا مثيل له. <b>مينرفيني ماركتس 360</b> يمنحك خطاً مباشراً لإتقان السوق.</p>
+  <div class="h-btns">
+    <button class="btn-g">سجّل الآن</button>
+    <button class="btn-o">▶ شاهد الفيديو</button>
+  </div>
+  <!-- PLATFORM MOCKUP -->
+  <div class="h-mockup">
+    <div class="mk-bar">
+      <div class="mk-dot" style="background:#ff5f57"></div>
+      <div class="mk-dot" style="background:#febc2e"></div>
+      <div class="mk-dot" style="background:#28c840"></div>
+      <div class="mk-url"><span>app.minervini360.com/dashboard</span></div>
+      <div class="mk-live"><div class="mk-live-dot"></div>مباشر</div>
+    </div>
+    <div class="mk-body">
+      <!-- sidebar -->
+      <div class="mk-sb">
+        <div class="mk-sb-label">أفضل الإعدادات</div>
+        <div class="mk-row on">
+          <div><div class="mk-tk">تاسي</div><div class="mk-nm">Nvidia</div></div>
+          <div class="mk-chg up">+3.2%</div>
+        </div>
+        <div class="mk-row">
+          <div><div class="mk-tk">SMCI</div><div class="mk-nm">Super Micro</div></div>
+          <div class="mk-chg up">+5.1%</div>
+        </div>
+        <div class="mk-row">
+          <div><div class="mk-tk">CRWD</div><div class="mk-nm">CrowdStrike</div></div>
+          <div class="mk-chg up">+1.8%</div>
+        </div>
+        <div class="mk-row">
+          <div><div class="mk-tk">ELF</div><div class="mk-nm">e.l.f. Beauty</div></div>
+          <div class="mk-chg up">+2.4%</div>
+        </div>
+        <div class="mk-row">
+          <div><div class="mk-tk">ASTS</div><div class="mk-nm">AST SpaceMob</div></div>
+          <div class="mk-chg dn">-1.2%</div>
+        </div>
+        <div class="mk-sb-label" style="margin-top:10px">قريبة من المحور</div>
+        <div class="mk-row">
+          <div><div class="mk-tk">META</div><div class="mk-nm">Meta Platforms</div></div>
+          <div class="mk-chg up">+0.8%</div>
+        </div>
+        <div class="mk-row">
+          <div><div class="mk-tk">MELI</div><div class="mk-nm">MercadoLibre</div></div>
+          <div class="mk-chg dn">-0.3%</div>
+        </div>
+        <div class="mk-sb-label" style="margin-top:10px">توقيت SPY</div>
+        <div style="margin:4px 4px 0;background:rgba(0,224,138,.08);border:1px solid rgba(0,224,138,.25);border-radius:7px;padding:8px 10px">
+          <div style="font-size:9px;font-weight:700;color:var(--grn);letter-spacing:.06em;margin-bottom:2px">اتجاه صاعد مؤكد</div>
+          <div style="font-size:8px;color:var(--t3)">Follow-Through Day نشط · يوم 4</div>
+        </div>
+      </div>
+      <!-- center -->
+      <div class="mk-center">
+        <div class="mk-sym-row">
+          <div>
+            <div class="mk-sym">NVDA</div>
+            <div class="mk-company">Nvidia Corporation · تقنية</div>
+            <div class="mk-vcp-tag">⚡ VCP مكتمل · 3 انكماشات · نقطة المحور $892</div>
+          </div>
+          <div style="text-align:left">
+            <div class="mk-price">$875.40</div>
+            <div class="mk-pchg">+3.2% اليوم</div>
+          </div>
+        </div>
+        <div class="mk-canvas-wrap"><canvas id="heroChart"></canvas></div>
+        <div class="mk-metrics">
+          <div class="mk-met"><div class="mk-ml">VCP Score</div><div class="mk-mv" style="color:var(--g3)">94</div></div>
+          <div class="mk-met"><div class="mk-ml">RS Rating</div><div class="mk-mv up">92</div></div>
+          <div class="mk-met"><div class="mk-ml">الحجم</div><div class="mk-mv up">142%</div></div>
+          <div class="mk-met"><div class="mk-ml">المرحلة</div><div class="mk-mv" style="color:var(--g3)">2</div></div>
+        </div>
+      </div>
+      <!-- right -->
+      <div class="mk-right">
+        <div class="mk-sb-label">تنبيهات MonAlert</div>
+        <div class="mk-alert" style="border-color:var(--grn)">
+          <div class="mk-atag" style="color:var(--grn)">⚡ إشارة شراء</div>
+          <div class="mk-abody">SMCI: اختراق المحور · حجم 2.3×</div>
+        </div>
+        <div class="mk-alert" style="border-color:var(--g2)">
+          <div class="mk-atag" style="color:var(--g2)">⚡ تنبيه VCP</div>
+          <div class="mk-abody">NVDA: الانكماش 3 مكتمل</div>
+        </div>
+        <div class="mk-alert" style="border-color:var(--red)">
+          <div class="mk-atag" style="color:var(--red)">⚠ تحذير</div>
+          <div class="mk-abody">ASTS: كسر MA50 الأسبوعي</div>
+        </div>
+        <div class="mk-sb-label" style="margin-top:10px">قادة RS</div>
+        <div class="mk-rs-row"><div class="mk-rs-tk">SMCI</div><div class="mk-rs-bw"><div class="mk-rs-bf" style="width:96%;background:var(--grn)"></div></div><div class="mk-rs-n up">96</div></div>
+        <div class="mk-rs-row"><div class="mk-rs-tk">NVDA</div><div class="mk-rs-bw"><div class="mk-rs-bf" style="width:92%;background:var(--grn)"></div></div><div class="mk-rs-n up">92</div></div>
+        <div class="mk-rs-row"><div class="mk-rs-tk">ELF</div><div class="mk-rs-bw"><div class="mk-rs-bf" style="width:89%;background:var(--blu)"></div></div><div class="mk-rs-n" style="color:var(--blu)">89</div></div>
+        <div class="mk-rs-row"><div class="mk-rs-tk">CRWD</div><div class="mk-rs-bw"><div class="mk-rs-bf" style="width:88%;background:var(--blu)"></div></div><div class="mk-rs-n" style="color:var(--blu)">88</div></div>
+        <div class="mk-rs-row"><div class="mk-rs-tk">ASTS</div><div class="mk-rs-bw"><div class="mk-rs-bf" style="width:83%;background:var(--t3)"></div></div><div class="mk-rs-n" style="color:var(--t2)">83</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER RIBBON -->
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-n">220%</div><div class="stat-l">متوسط العائد السنوي<br>لمدة 5 سنوات متتالية</div></div>
+  <div class="stat"><div class="stat-n">334%</div><div class="stat-l">عائد بطولة الاستثمار<br>الأمريكية 2021</div></div>
+  <div class="stat"><div class="stat-n">+50K</div><div class="stat-l">متداول محترف<br>يستخدم المنصة</div></div>
+  <div class="stat"><div class="stat-n">4×</div><div class="stat-l">بطل بطولة الاستثمار<br>الأمريكية</div></div>
+</div>
+
+<!-- PRIVATE ACCESS -->
+<section class="sec" id="s-mpa">
+  <div class="sec-wrap">
+    <div class="eyebrow">مينرفيني Private Access</div>
+    <h2 class="sec-h">انضم إلى مارك وفريقه<br>يومياً — مباشرة</h2>
+    <div class="mpa-layout">
+      <div class="reveal">
+        <p class="sec-p" style="margin-bottom:28px">انضم إلى مارك مينرفيني وفريقه يومياً للحصول على تعليق السوق المباشر، وتنبيهات التداول القابلة للتنفيذ، والتوجيه الخبير والتعليم التداولي القيّم — مباشرة من أحد أنجح المستثمرين في الأسهم الأمريكية.</p>
+        <div class="mpa-checks">
+          <div class="mpa-check"><div class="chk-ic">✓</div><div><div class="chk-t">مشتريات ومبيعات مارك اليومية</div><div class="chk-s">احصل على أفضل اختيارات مارك يومياً</div></div></div>
+          <div class="mpa-check"><div class="chk-ic">✓</div><div><div class="chk-t">جلسة Q&A أسبوعية مباشرة مع مارك</div><div class="chk-s">احصل على إجابات لأصعب أسئلتك التداولية مباشرة من مارك</div></div></div>
+          <div class="mpa-check"><div class="chk-ic">✓</div><div><div class="chk-t">نموذج توقيت SPY من مارك</div><div class="chk-s">ابقَ على الجانب الصحيح من السوق مع إشارات مارك الاحترافية</div></div></div>
+          <div class="mpa-check"><div class="chk-ic">✓</div><div><div class="chk-t">التعليم والتدريب والتوجيه الخبير</div><div class="chk-s">تعلم استراتيجية SEPA® المثبتة عبر دروس منظمة وتحليل مستمر</div></div></div>
+        </div>
+        <div class="mpa-btns">
+          <button class="btn-g">ابدأ الآن</button>
+          <button class="btn-o">اعرف المزيد</button>
+        </div>
+      </div>
+      <div class="mpa-card reveal-left">
+        <div class="mpa-card-top">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--g2);text-transform:uppercase;margin-bottom:14px">⚡ Private Access · مباشر</div>
+          <div class="mpa-card-img">
+            <canvas id="mpaChart" style="width:100%;height:100%"></canvas>
+          </div>
+        </div>
+        <div class="mpa-card-body">
+          <div style="font-size:14px;font-weight:800;color:var(--t1);margin-bottom:8px">تعليق السوق اليومي</div>
+          <div style="font-size:13px;color:var(--t2);line-height:1.7">السوق يُظهر اتجاهاً صاعداً قوياً مع Follow-Through Day نشط. التركيز على أسهم VCP عالية الجودة في مرحلة Stage 2. NVDA وSMCI في مقدمة قائمة المراقبة.</div>
+          <div style="margin-top:14px;padding:10px 12px;background:var(--glow2);border:1px solid rgba(212,165,32,.25);border-radius:8px">
+            <div style="font-size:10px;font-weight:700;color:var(--g2);margin-bottom:3px">🔔 تنبيه جديد من مارك</div>
+            <div style="font-size:12px;color:var(--t2)">SMCI: دخلت بسعر $740 · الهدف $950 · وقف $680</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO MANAGEMENT -->
+<section class="sec" id="s-portfolio" style="background:var(--b1)">
+  <div class="sec-wrap">
+    <div class="eyebrow">إدارة المحفظة</div>
+    <h2 class="sec-h">لوحة تحكم متكاملة<br>لقرارات فائقة السرعة</h2>
+    <div class="port-layout">
+      <div class="port-mockup reveal">
+        <div class="port-top">
+          <span class="port-title">📊 إدارة المحفظة</span>
+          <span class="port-live"><span style="width:6px;height:6px;border-radius:50%;background:var(--grn);display:inline-block"></span>مباشر</span>
+          <span style="font-size:20px;font-weight:900;color:var(--g3)">+34.2%</span>
+        </div>
+        <div class="port-body">
+          <div class="port-stats">
+            <div class="ps-card"><div class="ps-l">نسبة الفوز</div><div class="ps-v" style="color:var(--g3)">68%</div></div>
+            <div class="ps-card"><div class="ps-l">متوسط R:R</div><div class="ps-v up">3.2×</div></div>
+            <div class="ps-card"><div class="ps-l">الصفقات</div><div class="ps-v">47</div></div>
+          </div>
+          <div class="port-chart-wrap"><canvas id="portChart"></canvas></div>
+          <div class="port-table">
+            <div class="pt-hdr"><span>الرمز</span><span>الاسم</span><span>الدخول</span><span>الحالي</span><span>R</span></div>
+            <div class="pt-row"><span style="font-weight:800">NVDA</span><span style="color:var(--t2);font-size:10px">Nvidia Corp</span><span>$680</span><span class="up">$875</span><span class="up">+2.9R</span></div>
+            <div class="pt-row"><span style="font-weight:800">SMCI</span><span style="color:var(--t2);font-size:10px">Super Micro</span><span>$510</span><span class="up">$740</span><span class="up">+3.8R</span></div>
+            <div class="pt-row"><span style="font-weight:800">MELI</span><span style="color:var(--t2);font-size:10px">MercadoLibre</span><span>$1,450</span><span class="up">$1,612</span><span class="up">+1.8R</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-left">
+        <p class="sec-p" style="margin-bottom:28px">لوحة إدارة محفظة متكاملة بالكامل مبنية لاتخاذ القرارات الفورية، وحفظ السجلات التلقائي، وتقييم المخاطر في الوقت الحقيقي — حتى تتداول بدقة وسرعة وثقة.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px">
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--b2);border:1px solid var(--brd2);border-radius:10px"><span style="font-size:20px">⚡</span><div><div style="font-weight:700;font-size:13px;margin-bottom:2px">تسجيل تلقائي للصفقات</div><div style="font-size:12px;color:var(--t2)">كل صفقة تُسجَّل وتُحلَّل فورياً بلا جهد منك</div></div></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--b2);border:1px solid var(--brd2);border-radius:10px"><span style="font-size:20px">🎯</span><div><div style="font-weight:700;font-size:13px;margin-bottom:2px">تقييم المخاطر الفوري</div><div style="font-size:12px;color:var(--t2)">معرفة مخاطرك الحقيقية في كل لحظة</div></div></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--b2);border:1px solid var(--brd2);border-radius:10px"><span style="font-size:20px">📈</span><div><div style="font-weight:700;font-size:13px;margin-bottom:2px">حساب حجم الصفقة</div><div style="font-size:12px;color:var(--t2)">تحجيم مثالي بناءً على مخاطرة 1R تلقائياً</div></div></div>
+        </div>
+        <button class="btn-g">ابدأ الآن</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENER -->
+<section class="sec" id="s-screener">
+  <div class="sec-wrap">
+    <div class="eyebrow">فلترة SEPA® الشخصية</div>
+    <h2 class="sec-h">فلاتر مارك مينرفيني<br>الشخصية — حصرياً</h2>
+    <div class="scr-layout">
+      <div class="reveal-left">
+        <p class="sec-p" style="margin-bottom:28px">احصل على فلاتر الأسهم الشخصية لمارك مينرفيني — من معايير الزخم العالي إلى الاكتتابات الجديدة — مصممة لاكتشاف أفضل أفكار التداول ذات إمكانية الأداء الخارق.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
+          <div style="padding:12px 16px;background:var(--b2);border:1px solid var(--brd2);border-radius:9px;font-size:13px;display:flex;align-items:center;justify-content:space-between"><span class="gold">فلتر VCP الكلاسيكي</span><span style="font-size:10px;color:var(--t3);background:var(--b4);padding:2px 8px;border-radius:10px">127 سهم</span></div>
+          <div style="padding:12px 16px;background:var(--b2);border:1px solid var(--brd2);border-radius:9px;font-size:13px;display:flex;align-items:center;justify-content:space-between"><span class="gold">المرحلة 2 فقط — RS فوق 90</span><span style="font-size:10px;color:var(--t3);background:var(--b4);padding:2px 8px;border-radius:10px">43 سهم</span></div>
+          <div style="padding:12px 16px;background:var(--b2);border:1px solid var(--brd2);border-radius:9px;font-size:13px;display:flex;align-items:center;justify-content:space-between"><span class="gold">اكتتابات جديدة عالية الزخم</span><span style="font-size:10px;color:var(--t3);background:var(--b4);padding:2px 8px;border-radius:10px">18 سهم</span></div>
+          <div style="padding:12px 16px;background:var(--b2);border:1px solid var(--brd2);border-radius:9px;font-size:13px;display:flex;align-items:center;justify-content:space-between"><span class="gold">Cheat Entry — دخول محافظ</span><span style="font-size:10px;color:var(--t3);background:var(--b4);padding:2px 8px;border-radius:10px">31 سهم</span></div>
+        </div>
+        <button class="btn-g">ابدأ اليوم</button>
+      </div>
+      <div class="scr-mockup reveal">
+        <div class="scr-top">
+          <span style="font-size:11px;font-weight:700;color:var(--g2)">🔍 فلترة SEPA®</span>
+        </div>
+        <div class="scr-filters">
+          <select class="scr-sel"><option>جميع القطاعات</option></select>
+          <select class="scr-sel"><option>RS ≥ 90</option></select>
+          <select class="scr-sel"><option>المرحلة 2</option></select>
+          <button class="scr-run">▶ تشغيل</button>
+        </div>
+        <div class="scr-hdr"><span>الرمز</span><span>الشركة</span><span>السعر</span><span>التغير</span><span>RS</span><span>VCP</span></div>
+        <div class="scr-row"><span style="font-weight:800">NVDA</span><span style="color:var(--t2);font-size:10px">Nvidia Corp</span><span style="font-weight:700">$875</span><span class="up">+3.2%</span><span><span class="rs-pill" style="background:rgba(0,224,138,.1);color:var(--grn);border:1px solid rgba(0,224,138,.3)">92</span></span><span><span class="vcp-dot" style="background:var(--g2)"></span> 94</span></div>
+        <div class="scr-row"><span style="font-weight:800">SMCI</span><span style="color:var(--t2);font-size:10px">Super Micro</span><span style="font-weight:700">$740</span><span class="up">+5.1%</span><span><span class="rs-pill" style="background:rgba(0,224,138,.1);color:var(--grn);border:1px solid rgba(0,224,138,.3)">96</span></span><span><span class="vcp-dot" style="background:var(--g2)"></span> 91</span></div>
+        <div class="scr-row"><span style="font-weight:800">ELF</span><span style="color:var(--t2);font-size:10px">e.l.f. Beauty</span><span style="font-weight:700">$189</span><span class="up">+2.4%</span><span><span class="rs-pill" style="background:rgba(61,140,255,.1);color:var(--blu);border:1px solid rgba(61,140,255,.3)">89</span></span><span><span class="vcp-dot" style="background:var(--g3)"></span> 85</span></div>
+        <div class="scr-row"><span style="font-weight:800">CRWD</span><span style="color:var(--t2);font-size:10px">CrowdStrike</span><span style="font-weight:700">$318</span><span class="up">+1.8%</span><span><span class="rs-pill" style="background:rgba(61,140,255,.1);color:var(--blu);border:1px solid rgba(61,140,255,.3)">88</span></span><span><span class="vcp-dot" style="background:var(--g3)"></span> 86</span></div>
+        <div class="scr-row"><span style="font-weight:800">CELH</span><span style="color:var(--t2);font-size:10px">Celsius Holdings</span><span style="font-weight:700">$64</span><span class="up">+1.1%</span><span><span class="rs-pill" style="background:rgba(61,140,255,.1);color:var(--blu);border:1px solid rgba(61,140,255,.3)">83</span></span><span><span class="vcp-dot" style="background:var(--t3)"></span> 78</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAI SECTION -->
+<section class="sec" id="s-ai">
+  <div class="sec-wrap">
+    <div class="eyebrow">مينرفيني AI</div>
+    <h2 class="sec-h">MAI لا يخمّن.<br>يفكر مثل مارك مينرفيني — ولا يتردد أبداً.</h2>
+    <div class="ai-layout">
+      <div class="ai-chat reveal">
+        <div class="ai-chat-hdr">
+          <div class="ai-ava">M</div>
+          <div><div class="ai-nm">مينرفيني AI — MAI</div><div class="ai-st">متصل ونشط</div></div>
+        </div>
+        <div class="ai-msgs">
+          <div class="msg msg-u">حلّل سهم NVDA — هل نمط VCP مكتمل؟</div>
+          <div class="msg msg-a"><strong>NVDA — تحليل VCP كامل:</strong><br>✅ 3 انكماشات مكتملة — جفاف الحجم<br>✅ السهم في الثلث الأعلى من القاعدة<br>✅ RS Rating: 92 · المرحلة 2 مؤكدة<br>✅ MA50 &gt; MA150 &gt; MA200 — كل المتوسطات صاعدة<br><br><strong>نقطة الدخول: $892 | وقف الخسارة: $821 | الهدف: $1,050–1,200</strong></div>
+          <div class="msg msg-u">على محفظة $100K بمخاطرة 1%، كم حجم الصفقة؟</div>
+          <div class="msg msg-a">بناءً على مخاطرة <strong>1%</strong> ($1,000) ووقف خسارة 8.2%:<br><strong>حجم الصفقة: 136 سهم = $121,312</strong><br>انتبه: يتجاوز 10% من المحفظة — قلل المخاطرة إلى 0.75%<br>المعدّل: <strong>102 سهم = $90,984</strong></div>
+          <div class="msg msg-u">ما أفضل نقطة دخول محافظة؟</div>
+          <div class="msg msg-a"><strong>Cheat Entry:</strong> $858–862 (عند MA21 الأسبوعي)<br>يقلل المخاطرة ويمنح ربح/خسارة أفضل<br>الوقف: $820 | الهدف الأول: $920</div>
+        </div>
+        <div class="ai-inp-row">
+          <input class="ai-inp" placeholder="اسأل MAI عن أي سهم أو إعداد...">
+          <button class="ai-send">إرسال</button>
+        </div>
+      </div>
+      <div class="ai-features reveal-left">
+        <div style="margin-bottom:20px">
+          <p class="sec-p">قابل MAI — مينرفيني AI — يفسر الأنماط السلوكية فوراً وبلا عواطف، ويحلل الرسوم البيانية، ويقدم تعليقاً خاصاً وفورياً لكل سهم.</p>
+        </div>
+        <div class="ai-feat"><div class="af-icon">⚡</div><div><div class="af-title">تحويل بيانات الأسهم إلى رؤى قابلة للتنفيذ</div><div class="af-desc">لا تضيع وقتك في التحليل — MAI يقرأ الأنماط السعرية ويعطيك الخلاصة في ثوانٍ</div></div></div>
+        <div class="ai-feat"><div class="af-icon">🧠</div><div><div class="af-title">إعادة تعريف التعليم واتخاذ القرار</div><div class="af-desc">رؤى موثوقة وقابلة للتنفيذ تمكّنك من التحرك أسرع، والتداول بذكاء أكبر</div></div></div>
+        <div class="ai-feat"><div class="af-icon">🎯</div><div><div class="af-title">موضوعي بالكامل — بلا عواطف أبداً</div><div class="af-desc">MAI لا يتأثر بالخوف أو الطمع. يعطيك الحقيقة كما يراها مارك مينرفيني</div></div></div>
+        <button class="btn-g" style="margin-top:10px;width:100%">تصرّف الآن</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHARTING -->
+<section class="sec" id="s-charting">
+  <div class="sec-wrap">
+    <div class="eyebrow">رسوم بيانية من الجيل التالي</div>
+    <h2 class="sec-h">ابصر السوق كما<br>يراه مارك مينرفيني</h2>
+    <p class="sec-p">رسوم بيانية في الوقت الفعلي تمنحك طريقة أذكى وأكثر فعالية لتفسير ديناميكيات العرض والطلب. مدعومة بتقنية MonAlert® وتصنيفات Fab 5.</p>
+    <div class="chart-showcase reveal">
+      <div class="cs-hdr">
+        <span class="cs-sym">NVDA</span>
+        <span class="cs-price">$875.40</span>
+        <span class="cs-pchg">+3.2%</span>
+        <span class="cs-vcp">⚡ VCP مكتمل · 3 انكماشات</span>
+        <div class="cs-tabs">
+          <div class="cs-tab on">D</div>
+          <div class="cs-tab">W</div>
+          <div class="cs-tab">M</div>
+        </div>
+      </div>
+      <div class="cs-body">
+        <div>
+          <div class="cs-chart-wrap"><canvas id="mainChartBig"></canvas></div>
+          <div class="cs-legend">
+            <div class="cs-leg-item"><div class="cs-leg-line" style="background:var(--g2)"></div>السعر</div>
+            <div class="cs-leg-item"><div class="cs-leg-line" style="background:var(--blu);border-top:1px dashed var(--blu)"></div>MA50</div>
+            <div class="cs-leg-item"><div class="cs-leg-line" style="background:var(--purp)"></div>MA150</div>
+            <div class="cs-leg-item"><div class="cs-leg-line" style="background:#00cfff"></div>MA200</div>
+          </div>
+        </div>
+        <div class="cs-meta">
+          <div class="cs-met"><div class="cs-ml">نقطة المحور</div><div class="cs-mv" style="color:var(--g3)">$892.00</div></div>
+          <div class="cs-met"><div class="cs-ml">RS Rating</div><div class="cs-mv up">92</div></div>
+          <div class="cs-met"><div class="cs-ml">الحجم vs المتوسط</div><div class="cs-mv up">142%</div></div>
+          <div class="cs-met"><div class="cs-ml">تقييم VCP</div><div class="cs-mv" style="color:var(--g3)">94/100</div></div>
+          <div class="cs-met"><div class="cs-ml">المرحلة</div><div class="cs-mv" style="color:var(--g3)">2 ✓</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px">
+      <div style="background:var(--b2);border:1px solid var(--brd2);border-radius:12px;padding:22px;transition:.2s" onmouseenter="this.style.borderColor='rgba(212,165,32,.3)'" onmouseleave="this.style.borderColor=''"><div style="font-size:22px;margin-bottom:10px">📊</div><div style="font-size:15px;font-weight:700;margin-bottom:6px">رسوم بيانية في الوقت الفعلي</div><div style="font-size:13px;color:var(--t2)">بيانات حية بدون تأخير — كل تحرك سعري تراه فورياً</div></div>
+      <div style="background:var(--b2);border:1px solid var(--brd2);border-radius:12px;padding:22px;transition:.2s" onmouseenter="this.style.borderColor='rgba(212,165,32,.3)'" onmouseleave="this.style.borderColor=''"><div style="font-size:22px;margin-bottom:10px">⚡</div><div style="font-size:15px;font-weight:700;margin-bottom:6px">اكتشاف VCP تلقائي</div><div style="font-size:13px;color:var(--t2)">تحديد أنماط VCP تلقائياً مع تنبيه فوري عند اكتمالها</div></div>
+      <div style="background:var(--b2);border:1px solid var(--brd2);border-radius:12px;padding:22px;transition:.2s" onmouseenter="this.style.borderColor='rgba(212,165,32,.3)'" onmouseleave="this.style.borderColor=''"><div style="font-size:22px;margin-bottom:10px">🎯</div><div style="font-size:15px;font-weight:700;margin-bottom:6px">Fab 5 Rankings</div><div style="font-size:13px;color:var(--t2)">تصنيفات مارك الخاصة لأفضل 5 أسهم في السوق يومياً</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MONALERT -->
+<section class="sec" id="s-monalert" style="background:var(--b1)">
+  <div class="sec-wrap">
+    <div class="eyebrow">تقنية MonAlert® الاختراقية</div>
+    <h2 class="sec-h">لا تفوّتك فرصة<br>واحدة في السوق</h2>
+    <div class="mon-layout">
+      <div class="reveal">
+        <p class="sec-p" style="margin-bottom:28px">ابقَ مطلعاً على أهم نشاط السوق — بما في ذلك تأكيدات وانتهاكات مارك — لتقييم ما إذا كان السهم يتصرف بشكل بنّاء أم يُطلق إشارات تحذير مبكرة.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px">
+          <div style="display:flex;gap:10px;align-items:center;padding:12px 14px;background:var(--b2);border:1px solid var(--brd2);border-radius:9px"><span style="color:var(--grn);font-size:16px">✓</span><span style="font-size:13px">تأكيدات وانتهاكات مارك الشخصية</span></div>
+          <div style="display:flex;gap:10px;align-items:center;padding:12px 14px;background:var(--b2);border:1px solid var(--brd2);border-radius:9px"><span style="color:var(--grn);font-size:16px">✓</span><span style="font-size:13px">تنبيهات اختراق المحور في الوقت الفعلي</span></div>
+          <div style="display:flex;gap:10px;align-items:center;padding:12px 14px;background:var(--b2);border:1px solid var(--brd2);border-radius:9px"><span style="color:var(--grn);font-size:16px">✓</span><span style="font-size:13px">إشارات الخروج والتوزيع مبكراً</span></div>
+          <div style="display:flex;gap:10px;align-items:center;padding:12px 14px;background:var(--b2);border:1px solid var(--brd2);border-radius:9px"><span style="color:var(--grn);font-size:16px">✓</span><span style="font-size:13px">نشاط الحجم الاستثنائي الفوري</span></div>
+        </div>
+        <button class="btn-g">تصرّف الآن</button>
+      </div>
+      <div class="mon-feed reveal-left">
+        <div class="mon-item" style="border-color:var(--grn)"><div class="mi-top"><div class="mi-tag" style="color:var(--grn)">⚡ إشارة شراء · MonAlert</div><div class="mi-time">الآن</div></div><div class="mi-body"><span class="mi-tk">SMCI</span> — اختراق نقطة المحور $755 بحجم 2.3× المتوسط. مرحلة 2 مؤكدة. تأكيد من مارك.</div></div>
+        <div class="mon-item" style="border-color:var(--g2)"><div class="mi-top"><div class="mi-tag" style="color:var(--g2)">⚡ تنبيه VCP · MonAlert</div><div class="mi-time">قبل 18 د</div></div><div class="mi-body"><span class="mi-tk">NVDA</span> — الانكماش الثالث مكتمل. الحجم جاف. جاهز للاختراق عند $892.</div></div>
+        <div class="mon-item" style="border-color:var(--purp)"><div class="mi-top"><div class="mi-tag" style="color:var(--purp)">🔔 إعداد جديد · MonAlert</div><div class="mi-time">قبل 35 د</div></div><div class="mi-body"><span class="mi-tk">CELH</span> — VCP جديد يتشكل. انكماشان مكتملان. الحجم ينضب. راقبه.</div></div>
+        <div class="mon-item" style="border-color:var(--red)"><div class="mi-top"><div class="mi-tag" style="color:var(--red)">⚠ تحذير · MonAlert</div><div class="mi-time">قبل 47 د</div></div><div class="mi-body"><span class="mi-tk">ASTS</span> — كسر MA50 الأسبوعي بحجم مرتفع. قلص الموقف أو أغلقه.</div></div>
+        <div class="mon-item" style="border-color:var(--blu)"><div class="mi-top"><div class="mi-tag" style="color:var(--blu)">📰 تحديث قطاع</div><div class="mi-time">قبل ساعة</div></div><div class="mi-body">قطاع التقنية يقود السوق اليوم. RS القطاع 94. NVDA وSMCI في المقدمة.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRADE GRADER -->
+<section class="sec" id="s-grader">
+  <div class="sec-wrap">
+    <div class="eyebrow">TradeGrader</div>
+    <h2 class="sec-h">تداول بذكاء.<br>تعلّم من كل صفقة.</h2>
+    <div class="grader-layout">
+      <div class="reveal">
+        <p class="sec-p" style="margin-bottom:24px">تداول بذكاء مع <b>TradeGrader</b> — أداة التحليل البعدي المتطورة التي تحدد بدقة ما أصبت فيه وأين أخطأت. عزز نقاط قوتك، وتخلص من العادات المكلفة، وحوّل كل صفقة إلى درس قيّم.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
+          <div style="display:flex;gap:10px;align-items:center;padding:12px 14px;background:var(--b2);border:1px solid var(--brd2);border-radius:9px"><span style="color:var(--grn);font-size:16px">✓</span><span style="font-size:13px">تحديد ما أصبت وما أخطأت تحديداً دقيقاً</span></div>
+          <div style="display:flex;gap:10px;align-items:center;padding:12px 14px;background:var(--b2);border:1px solid var(--brd2);border-radius:9px"><span style="color:var(--grn);font-size:16px">✓</span><span style="font-size:13px">درجة لكل صفقة من A+ إلى F</span></div>
+          <div style="display:flex;gap:10px;align-items:center;padding:12px 14px;background:var(--b2);border:1px solid var(--brd2);border-radius:9px"><span style="color:var(--grn);font-size:16px">✓</span><span style="font-size:13px">تحسين مستمر للأداء بناءً على البيانات</span></div>
+        </div>
+        <button class="btn-g">ابدأ اليوم</button>
+      </div>
+      <div class="grader-card reveal-left">
+        <div class="gc-hdr">
+          <span class="gc-title">📊 TradeGrader — آخر الصفقات</span>
+          <span style="font-size:12px;color:var(--t2)">47 صفقة · 2026</span>
+        </div>
+        <div class="gc-body">
+          <div class="trade-grade-row">
+            <div class="tgr-tk">NVDA</div>
+            <div class="tgr-info"><div class="tgr-setup" style="font-size:10px;color:var(--t3)">VCP المرحلة 2 · دخول ممتاز</div></div>
+            <div><div class="tgr-ret up">+28.7%</div><div class="tgr-r">+2.9R</div></div>
+            <div class="grade-badge" style="background:rgba(0,224,138,.15);color:var(--grn);border:1px solid rgba(0,224,138,.3)">A</div>
+          </div>
+          <div class="trade-grade-row">
+            <div class="tgr-tk">SMCI</div>
+            <div class="tgr-info"><div class="tgr-setup" style="font-size:10px;color:var(--t3)">اختراق مثالي · توقيت دقيق</div></div>
+            <div><div class="tgr-ret up">+44.1%</div><div class="tgr-r">+3.8R</div></div>
+            <div class="grade-badge" style="background:rgba(0,224,138,.15);color:var(--grn);border:1px solid rgba(0,224,138,.3)">A+</div>
+          </div>
+          <div class="trade-grade-row">
+            <div class="tgr-tk">AAPL</div>
+            <div class="tgr-info"><div class="tgr-setup" style="font-size:10px;color:var(--t3)">اختراق فاشل · خروج جيد</div></div>
+            <div><div class="tgr-ret dn">-3.9%</div><div class="tgr-r dn">-0.7R</div></div>
+            <div class="grade-badge" style="background:rgba(255,220,100,.1);color:#ffc800;border:1px solid rgba(255,200,0,.3)">B-</div>
+          </div>
+          <div class="trade-grade-row">
+            <div class="tgr-tk">CELH</div>
+            <div class="tgr-info"><div class="tgr-setup" style="font-size:10px;color:var(--t3)">VCP 3 انكماشات · مثالي</div></div>
+            <div><div class="tgr-ret up">+55.8%</div><div class="tgr-r">+4.2R</div></div>
+            <div class="grade-badge" style="background:rgba(0,224,138,.15);color:var(--grn);border:1px solid rgba(0,224,138,.3)">A+</div>
+          </div>
+          <div class="trade-grade-row">
+            <div class="tgr-tk">MELI</div>
+            <div class="tgr-info"><div class="tgr-setup" style="font-size:10px;color:var(--t3)">Stage 2 Breakout</div></div>
+            <div><div class="tgr-ret up">+11.2%</div><div class="tgr-r">+1.8R</div></div>
+            <div class="grade-badge" style="background:rgba(61,140,255,.1);color:var(--blu);border:1px solid rgba(61,140,255,.3)">B+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="sec" id="s-news" style="background:var(--b1)">
+  <div class="sec-wrap">
+    <div class="eyebrow">الأخبار والعناوين</div>
+    <h2 class="sec-h">أخبار السوق الحرجة<br>أسرع من أي وقت مضى</h2>
+    <div class="news-layout">
+      <div class="news-feed reveal">
+        <div class="news-item"><div class="ni-cat" style="color:var(--grn)">⬆ ترقية محلل</div><div class="ni-title">Wedbush ترفع هدف NVDA إلى $200 — "أقوى موضع في تاريخ الشركة"</div><div class="ni-meta">قبل 8 دقائق · Wedbush Securities</div></div>
+        <div class="news-item"><div class="ni-cat" style="color:var(--g2)">📊 أرباح</div><div class="ni-title">SMCI تتجاوز التوقعات بنسبة 23% — أرباح Q2 تُفاجئ السوق</div><div class="ni-meta">قبل 22 دقيقة · SEC Filing</div></div>
+        <div class="news-item"><div class="ni-cat" style="color:var(--blu)">🏛 الفيدرالي</div><div class="ni-title">الفيدرالي يثبّت الفائدة — يلن: "البيانات تدعم التثبيت حتى يونيو"</div><div class="ni-meta">قبل 45 دقيقة · Federal Reserve</div></div>
+        <div class="news-item"><div class="ni-cat" style="color:var(--purp)">🌐 قطاع التقنية</div><div class="ni-title">الذكاء الاصطناعي يقود موجة شراء مؤسسي — أسهم السيمي كوندكتور في الواجهة</div><div class="ni-meta">قبل ساعة · Bloomberg</div></div>
+        <div class="news-item"><div class="ni-cat" style="color:var(--red)">⚠ تحذير</div><div class="ni-title">بيانات التضخم أعلى من المتوقع — السوق يتراجع في بداية التداول</div><div class="ni-meta">قبل ساعتين · Reuters</div></div>
+      </div>
+      <div class="reveal-left">
+        <p class="sec-p" style="margin-bottom:28px">احصل على الأخبار الحرجة والعناوين أسرع من أي وقت مضى. من ترقيات المحللين إلى تقارير الأرباح السريعة، كل قصة ذات صلة تظهر في الوقت الفعلي — في اللحظة الأكثر أهمية.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
+          <div style="display:flex;gap:10px;padding:12px 14px;background:var(--b2);border:1px solid var(--brd2);border-radius:9px;align-items:center"><span style="color:var(--grn)">✓</span><span style="font-size:13px">ترقيات وتخفيضات المحللين فورياً</span></div>
+          <div style="display:flex;gap:10px;padding:12px 14px;background:var(--b2);border:1px solid var(--brd2);border-radius:9px;align-items:center"><span style="color:var(--grn)">✓</span><span style="font-size:13px">تقارير الأرباح والمفاجآت</span></div>
+          <div style="display:flex;gap:10px;padding:12px 14px;background:var(--b2);border:1px solid var(--brd2);border-radius:9px;align-items:center"><span style="color:var(--grn)">✓</span><span style="font-size:13px">أخبار الاقتصاد الكلي المؤثرة</span></div>
+        </div>
+        <button class="btn-g">تصرّف الآن</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGGER -->
+<section class="sec" id="s-logger">
+  <div class="sec-wrap">
+    <div class="eyebrow">TradingLogger Analytics</div>
+    <h2 class="sec-h">قِس ما يهم.<br>حسّن أداءك.</h2>
+    <p class="sec-p">احصل على مقاييس واضحة للتوقع وكفاءة الربح/الخسارة واتساق الأداء — حتى تقيس ما يهم وتصقل ميزتك ببيانات حقيقية لا عواطف.</p>
+    <div class="logger-stats">
+      <div class="ls"><div class="ls-v up">+34.2%</div><div class="ls-l">العائد الكلي 2026</div></div>
+      <div class="ls"><div class="ls-v" style="color:var(--g3)">68%</div><div class="ls-l">نسبة الفوز — 47 صفقة</div></div>
+      <div class="ls"><div class="ls-v up">3.2×</div><div class="ls-l">متوسط R:R</div></div>
+      <div class="ls"><div class="ls-v dn">-4.8%</div><div class="ls-l">أقصى هبوط</div></div>
+    </div>
+    <div class="logger-table reveal">
+      <div class="lt-hdr"><span>الرمز</span><span>الإعداد</span><span>الدخول</span><span>الخروج</span><span>العائد</span><span>R</span><span>الدرجة</span></div>
+      <div class="lt-row"><span style="font-weight:800">NVDA</span><span style="color:var(--t2);font-size:10px">VCP المرحلة 2</span><span>$680</span><span>$875</span><span class="up">+28.7%</span><span class="up">+2.9R</span><span><span style="padding:2px 9px;border-radius:20px;font-size:10px;font-weight:800;background:rgba(0,224,138,.12);color:var(--grn);border:1px solid rgba(0,224,138,.3)">A</span></span></div>
+      <div class="lt-row"><span style="font-weight:800">SMCI</span><span style="color:var(--t2);font-size:10px">اختراق مثالي</span><span>$510</span><span>$735</span><span class="up">+44.1%</span><span class="up">+3.8R</span><span><span style="padding:2px 9px;border-radius:20px;font-size:10px;font-weight:800;background:rgba(0,224,138,.12);color:var(--grn);border:1px solid rgba(0,224,138,.3)">A+</span></span></div>
+      <div class="lt-row"><span style="font-weight:800">AAPL</span><span style="color:var(--t2);font-size:10px">اختراق فاشل</span><span>$178</span><span>$171</span><span class="dn">-3.9%</span><span class="dn">-0.7R</span><span><span style="padding:2px 9px;border-radius:20px;font-size:10px;font-weight:800;background:rgba(255,200,0,.1);color:#ffc800;border:1px solid rgba(255,200,0,.3)">B-</span></span></div>
+      <div class="lt-row"><span style="font-weight:800">CELH</span><span style="color:var(--t2);font-size:10px">VCP 3 انكماشات</span><span>$52</span><span>$81</span><span class="up">+55.8%</span><span class="up">+4.2R</span><span><span style="padding:2px 9px;border-radius:20px;font-size:10px;font-weight:800;background:rgba(0,224,138,.12);color:var(--grn);border:1px solid rgba(0,224,138,.3)">A+</span></span></div>
+      <div class="lt-row"><span style="font-weight:800">MELI</span><span style="color:var(--t2);font-size:10px">Stage 2 Breakout</span><span>$1,450</span><span>$1,612</span><span class="up">+11.2%</span><span class="up">+1.8R</span><span><span style="padding:2px 9px;border-radius:20px;font-size:10px;font-weight:800;background:rgba(61,140,255,.1);color:var(--blu);border:1px solid rgba(61,140,255,.3)">B+</span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS / EXPERT QUOTES -->
+<section class="sec" id="s-quotes" style="background:var(--b1)">
+  <div class="sec-wrap">
+    <div class="eyebrow">اقتباسات الخبراء</div>
+    <h2 class="sec-h">لا مثيل له</h2>
+    <div class="expert-quotes reveal">
+      <div class="eq-card">
+        <div class="eq-text">«مينرفيني تفوّق على معظم حاملي الدكتوراه الذين يحاولون تصميم أنظمة للتغلب على السوق. أداؤه كان مذهلاً بكل المقاييس. معظم المتداولين ومديري الأموال سيكونون سعداء لو كانت أسوأ سنواته هي أفضل سنواتهم.»</div>
+        <div class="eq-author">جاك شواغر</div>
+        <div class="eq-role">مؤلف كتاب Stock Market Wizards</div>
+      </div>
+      <div class="eq-card">
+        <div class="eq-text">«لا أحد يعرف سوق الأسهم أكثر من مارك مينرفيني. لا أحد لديه سجل أداء أفضل من مارك مينرفيني.»</div>
+        <div class="eq-author">نورم زادا</div>
+        <div class="eq-role">مؤسس بطولة الاستثمار الأمريكية</div>
+      </div>
+    </div>
+    <div class="quotes-grid" style="margin-top:24px">
+      <div class="quote-card featured reveal"><div class="quote-stars">★★★★★</div><div class="quote-text">«المنصة غيّرت طريقة تداولي بالكامل. <em>نمط VCP وتقنية MonAlert</em> ساعداني على تحقيق +47% في 8 أشهر. لا أتخيل التداول بدونها.»</div><div class="quote-author"><div class="qa-ava" style="background:linear-gradient(135deg,var(--g1),var(--g4))">أ</div><div><div class="qa-name">أحمد الشريف</div><div class="qa-role">متداول محترف · الرياض</div></div></div></div>
+      <div class="quote-card reveal"><div class="quote-stars">★★★★★</div><div class="quote-text">«MAI يوفر عليّ ساعات من التحليل يومياً. <em>يفكر مثل مارك تماماً</em>. أفضل استثمار في حياتي التداولية.»</div><div class="quote-author"><div class="qa-ava" style="background:linear-gradient(135deg,#185fa5,#4d9fff)">م</div><div><div class="qa-name">محمد القحطاني</div><div class="qa-role">مدير محفظة · دبي</div></div></div></div>
+      <div class="quote-card reveal"><div class="quote-stars">★★★★★</div><div class="quote-text">«الرسوم البيانية والفلترة SEPA جعلتني <em>أتفوق على السوق للعام الثالث</em> على التوالي. المنصة الوحيدة التي تستحق الاشتراك.»</div><div class="quote-author"><div class="qa-ava" style="background:linear-gradient(135deg,#0f6e56,#1d9e75)">ف</div><div><div class="qa-name">فارس العمري</div><div class="qa-role">مستثمر · الكويت</div></div></div></div>
+      <div class="quote-card reveal"><div class="quote-stars">★★★★★</div><div class="quote-text">«من أكثر من سنة وأنا أستخدمها يومياً. <em>MonAlert وحده يستحق الاشتراك</em>. لا تتداول بدون هذه المنصة.»</div><div class="quote-author"><div class="qa-ava" style="background:linear-gradient(135deg,#6a0f6e,#b840ff)">س</div><div><div class="qa-name">سارة المالكي</div><div class="qa-role">مستثمرة نمو · عُمان</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec" id="s-pricing">
+  <div class="pricing-wrap">
+    <div class="eyebrow">خطط الاشتراك</div>
+    <h2 class="sec-h">استثمر في نفسك</h2>
+    <p style="font-size:16px;color:var(--t2);margin-bottom:10px">مينرفيني Private Access مجاني مع عضوية مينرفيني ماركتس 360</p>
+    <div class="pricing-grid">
+      <div class="pc reveal">
+        <div class="pc-plan">تجربة شهرية</div>
+        <div class="pc-amt"><sup>$</sup>999</div>
+        <div class="pc-period">/ شهر · يتجدد شهرياً</div>
+        <div class="pc-features">
+          <div class="pf">لوحة التداول الكاملة</div>
+          <div class="pf">فلتر SEPA® الشخصي</div>
+          <div class="pf">تنبيهات MonAlert</div>
+          <div class="pf">مينرفيني AI — MAI</div>
+          <div class="pf">TradingLogger Analytics</div>
+          <div class="pf">TradeGrader</div>
+        </div>
+        <button class="pc-btn pc-btn-o">ابدأ الآن</button>
+      </div>
+      <div class="pc star reveal">
+        <div class="pc-pop">الأكثر شعبية · وفر 50%</div>
+        <div class="pc-plan" style="margin-top:24px">سنوي</div>
+        <div class="pc-amt"><sup>$</sup>499</div>
+        <div class="pc-period">/ شهر</div>
+        <div class="pc-save">وفر $6,000 سنوياً</div>
+        <div class="pc-features">
+          <div class="pf">جميع المميزات الشهرية</div>
+          <div class="pf">Private Access مجاناً</div>
+          <div class="pf">جلسات Q&A أسبوعية مع مارك</div>
+          <div class="pf">مشتريات ومبيعات مارك اليومية</div>
+          <div class="pf">نموذج توقيت SPY</div>
+          <div class="pf">تطبيق الجوال</div>
+          <div class="pf">دعم متميز 24/7</div>
+        </div>
+        <button class="pc-btn pc-btn-g">ابدأ الآن — وفر 50%</button>
+      </div>
+      <div class="pc reveal">
+        <div class="pc-plan">ربع سنوي</div>
+        <div class="pc-amt"><sup>$</sup>699</div>
+        <div class="pc-period">/ شهر · كل 3 أشهر</div>
+        <div class="pc-save">وفر 30%</div>
+        <div class="pc-features">
+          <div class="pf">جميع المميزات الشهرية</div>
+          <div class="pf">Private Access مجاناً</div>
+          <div class="pf">جلسات Q&A الأسبوعية</div>
+          <div class="pf">تطبيق الجوال</div>
+          <div class="pf">دعم متميز</div>
+        </div>
+        <button class="pc-btn pc-btn-o">ابدأ الآن</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="s-faq">
+  <div class="faq-wrap">
+    <div class="eyebrow" style="display:block;text-align:center">الأسئلة الشائعة</div>
+    <h2 class="sec-h" style="text-align:center">كل ما تريد معرفته</h2>
+    <div class="faq-list">
+      <div class="fq"><div class="fq-q" onclick="faq(this)">ما هو مينرفيني ماركتس 360؟<div class="fq-ic">+</div></div><div class="fq-a">مينرفيني ماركتس 360 هي منصة تداول متكاملة صممها مارك مينرفيني بنفسه، تجمع الرسوم البيانية المتقدمة وفلترة SEPA® الشخصية وتقنية MonAlert® والذكاء الاصطناعي MAI وTradingLogger وTradeGrader في مكان واحد متكامل.</div></div>
+      <div class="fq"><div class="fq-q" onclick="faq(this)">ما هو نمط VCP وكيف تكتشفه المنصة؟<div class="fq-ic">+</div></div><div class="fq-a">VCP (Volatility Contraction Pattern) هو نمط انكماش التقلب الذي طوره مارك مينرفيني. يتميز بانكماشات متتالية في نطاق السعر والحجم مما يدل على تجميع مؤسسي وزيادة احتمالية الاختراق القوي. المنصة تكتشفه تلقائياً وتنبهك فوراً.</div></div>
+      <div class="fq"><div class="fq-q" onclick="faq(this)">هل مينرفيني Private Access مضمّن في الاشتراك؟<div class="fq-ic">+</div></div><div class="fq-a">نعم. مينرفيني Private Access مضمّن مجاناً مع عضوية ماركتس 360. يشمل التعليق اليومي المباشر من مارك وفريقه، وجلسات Q&A أسبوعية، ومشتريات ومبيعات مارك الشخصية، ونموذج توقيت SPY.</div></div>
+      <div class="fq"><div class="fq-q" onclick="faq(this)">كيف يعمل MAI — مينرفيني AI؟<div class="fq-ic">+</div></div><div class="fq-a">MAI هو ذكاء اصطناعي مدرّب على عقود من خبرة مارك مينرفيني وأنماط السوق. يحلل الأسهم فورياً ويعطيك تقييماً موضوعياً للإعداد ونقطة الدخول والهدف ووقف الخسارة وحجم الصفقة — كل ذلك في ثوانٍ.</div></div>
+      <div class="fq"><div class="fq-q" onclick="faq(this)">ما هو TradeGrader وكيف يحسّن أدائي؟<div class="fq-ic">+</div></div><div class="fq-a">TradeGrader هو أداة تحليل بعدية متطورة تُعطي كل صفقة درجة من A+ إلى F بناءً على جودة الدخول والخروج وإدارة المخاطر. يساعدك على تحديد نقاط قوتك وضعفك وتحسين أدائك باستمرار.</div></div>
+      <div class="fq"><div class="fq-q" onclick="faq(this)">هل يمكنني إلغاء الاشتراك في أي وقت؟<div class="fq-ic">+</div></div><div class="fq-a">نعم. يمكنك إلغاء اشتراكك الشهري أو الربع سنوي في أي وقت من إعدادات حسابك. للاشتراك السنوي، يسري حتى نهاية الفترة المدفوعة دون أي رسوم إضافية.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="sec" id="s-cta">
+  <div class="cta-wrap">
+    <div class="h-eyebrow" style="margin-bottom:24px">لم تجد منصة أحلامك؟</div>
+    <h2 class="cta-h">
+      <span class="h-gold" style="display:block">فبنيناها بأنفسنا</span>
+      مارك مينرفيني
+    </h2>
+    <p class="cta-sub">انضم إلى الآلاف من المتداولين الذين يستخدمون المنصة الأقوى على وجه الأرض — واحصل على الأفضلية الحقيقية في السوق.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <button class="btn-g" style="font-size:16px;padding:17px 46px">ابدأ رحلتك اليوم</button>
+      <button class="btn-o" style="font-size:16px;padding:16px 44px">اعرف المزيد</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+        <div class="n-icon">M</div>
+        <span style="font-size:15px;font-weight:800;letter-spacing:.05em">مينرفيني</span>
+        <span class="n-tag">ماركتس 360</span>
+      </div>
+      <p>المنصة الأقوى على وجه الأرض. صُممت من قِبَل أحد أنجح المتداولين في تاريخ السوق الأمريكي. قوة. دقة. أداء.</p>
+    </div>
+    <div class="ft-col"><h5>المنتج</h5><a href="#">لوحة التداول</a><a href="#">فلترة SEPA®</a><a href="#">مينرفيني AI</a><a href="#">MonAlert®</a><a href="#">TradingLogger</a><a href="#">TradeGrader</a><a href="#">أخبار السوق</a></div>
+    <div class="ft-col"><h5>التعلم</h5><a href="#">ورشة العمل 2026</a><a href="#">Private Access</a><a href="#">مكتبة الفيديو</a><a href="#">Trader Rehab</a><a href="#">المدوّنة</a></div>
+    <div class="ft-col"><h5>الشركة</h5><a href="#">عن مارك</a><a href="#">الأخبار</a><a href="#">تواصل معنا</a><a href="#">الأسئلة الشائعة</a><a href="#">سياسة الخصوصية</a><a href="#">شروط الاستخدام</a></div>
+  </div>
+  <div class="ft-bottom">
+    <div class="ft-copy">© 2026 مينرفيني ماركتس 360. جميع الحقوق محفوظة. SEPA® وMonAlert® علامات تجارية مسجلة.</div>
+    <div class="ft-legal"><a href="#">الخصوصية</a><a href="#">الشروط</a><a href="#">إخلاء المسؤولية</a></div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+// ─── FAQ
+function faq(el){const item=el.parentElement;item.classList.toggle('open')}
+
+// ─── REVEAL ON SCROLL
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal,.reveal-left').forEach(el=>obs.observe(el));
+
+// ─── TICKER RIBBON
+const tickers=[
+  {tk:'NVDA',p:875.40,c:3.2},{tk:'SMCI',p:740.10,c:5.1},{tk:'AAPL',p:189.84,c:-0.4},{tk:'TSLA',p:248.50,c:2.8},{tk:'MSFT',p:415.20,c:0.9},
+  {tk:'CRWD',p:318.50,c:1.8},{tk:'META',p:488.00,c:0.8},{tk:'AMZN',p:195.40,c:1.2},{tk:'GOOG',p:172.30,c:-0.3},{tk:'MELI',p:1612,c:-0.3},
+];
+const rb=document.getElementById('ribbon');
+const html=tickers.map(t=>`<div class="ribbon-item"><span class="tk">${t.tk}</span><span>$${t.p.toLocaleString()}</span><span class="pct ${t.c>=0?'up':'dn'}">${t.c>=0?'▲':'▼'} ${Math.abs(t.c)}%</span></div>`).join('');
+rb.innerHTML=html+html;
+
+// ─── CHART HELPERS
+function gp(n=70,start=.72,end=875){
+  const d=[];let p=end*start;
+  for(let i=0;i<n;i++){p*=1+(Math.random()-.43)*.026;d.push(+p.toFixed(2))}
+  d[d.length-1]=end;return d;
+}
+function sma(d,n){return d.map((_,i)=>i>=n-1?+(d.slice(i-n+1,i+1).reduce((a,b)=>a+b)/n).toFixed(2):null)}
+const G='#d4a520',BL='#3d8cff',PU='#9060ff',CY='#00cfff',GR='#00e08a';
+const base={responsive:true,maintainAspectRatio:false,animation:{duration:700},plugins:{legend:{display:false}},scales:{x:{display:false},y:{display:false}}};
+
+function lineChart(id,colors,datasets,opts){
+  const ctx=document.getElementById(id);if(!ctx)return;
+  const d=gp();
+  const o=opts||{};
+  new Chart(ctx,{type:'line',data:{labels:d.map(()=>''),datasets:datasets(d)},options:Object.assign({},base,o)});
+}
+
+// hero chart
+(()=>{const ctx=document.getElementById('heroChart');if(!ctx)return;
+  const d=gp(60);
+  new Chart(ctx,{type:'line',data:{labels:d.map(()=>''),datasets:[
+    {data:d,borderColor:G,borderWidth:1.5,pointRadius:0,tension:.25,fill:true,backgroundColor:'rgba(212,165,32,.06)'},
+    {data:sma(d,14),borderColor:BL,borderWidth:1,borderDash:[4,3],pointRadius:0,fill:false},
+    {data:sma(d,24),borderColor:PU,borderWidth:1,borderDash:[2,5],pointRadius:0,fill:false},
+  ]},options:{...base,scales:{x:{display:false},y:{display:false}}}});
+})();
+
+// mpa chart
+(()=>{const ctx=document.getElementById('mpaChart');if(!ctx)return;
+  const d=gp(50,.80);
+  new Chart(ctx,{type:'line',data:{labels:d.map(()=>''),datasets:[
+    {data:d,borderColor:G,borderWidth:2,pointRadius:0,tension:.3,fill:true,backgroundColor:'rgba(212,165,32,.08)'},
+    {data:sma(d,12),borderColor:BL,borderWidth:1.5,borderDash:[4,4],pointRadius:0,fill:false},
+  ]},options:{...base,scales:{x:{display:false},y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#4a4a68',font:{size:9},callback:v=>'$'+v.toFixed(0)},border:{display:false}}}}});
+})();
+
+// portfolio equity
+(()=>{const ctx=document.getElementById('portChart');if(!ctx)return;
+  const d=[100];for(let i=1;i<20;i++)d.push(+(d[i-1]*(1+(Math.random()-.36)*.04)).toFixed(2));
+  const months=['يناير','فبراير','مارس','إبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  new Chart(ctx,{type:'line',data:{labels:d.map((_,i)=>months[i%12]),datasets:[{data:d,borderColor:G,borderWidth:2,pointRadius:0,tension:.4,fill:true,backgroundColor:'rgba(212,165,32,.08)'}]},
+  options:{...base,scales:{x:{grid:{display:false},ticks:{color:'#4a4a68',font:{size:9}},border:{display:false}},y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#4a4a68',font:{size:9},callback:v=>v+'%'},border:{display:false}}}}});
+})();
+
+// main showcase chart
+(()=>{const ctx=document.getElementById('mainChartBig');if(!ctx)return;
+  const d=gp(80);
+  new Chart(ctx,{type:'line',data:{labels:d.map(()=>''),datasets:[
+    {data:d,borderColor:G,borderWidth:2,pointRadius:0,tension:.22,fill:true,backgroundColor:'rgba(212,165,32,.06)'},
+    {data:sma(d,14),borderColor:BL,borderWidth:1.5,borderDash:[5,4],pointRadius:0,fill:false},
+    {data:sma(d,26),borderColor:PU,borderWidth:1.5,borderDash:[3,5],pointRadius:0,fill:false},
+    {data:sma(d,38),borderColor:CY,borderWidth:1.5,borderDash:[2,6],pointRadius:0,fill:false},
+  ]},options:{
+    responsive:true,maintainAspectRatio:false,animation:{duration:900},
+    plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,backgroundColor:'rgba(11,11,18,.96)',borderColor:'rgba(255,255,255,.12)',borderWidth:1,titleColor:'#f0f0f8',bodyColor:'#9898b8',callbacks:{label:c=>`${c.dataset.label||'Price'}: $${c.raw?.toFixed(2)??'—'}`}}},
+    scales:{x:{display:false},y:{grid:{color:'rgba(255,255,255,.04)',drawBorder:false},ticks:{color:'#4a4a68',font:{size:10},callback:v=>'$'+v.toFixed(0)},border:{display:false}}}
+  }});
+})();
+
+// tab switching
+document.querySelectorAll('.cs-tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.cs-tab').forEach(x=>x.classList.remove('on'));t.classList.add('on')}));
+</script>
+</script>
+
+<style>
+/* ══ DELAY NOTICE ════════════════════════════════════════════ */
+.delay-bar{
+  background:rgba(212,165,32,.1);border-bottom:1px solid rgba(212,165,32,.25);
+  padding:6px 28px;display:flex;align-items:center;gap:8px;
+  font-size:11px;color:#c9a020;font-weight:600;flex-wrap:wrap;
+}
+.delay-dot{width:7px;height:7px;border-radius:50%;background:#d4a520;animation:blink 2s infinite}
+@keyframes blink{50%{opacity:.3}}
+.delay-time{margin-right:auto;color:#4a4a68;font-size:10px}
+.market-status{padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700}
+.status-open{background:rgba(0,224,138,.12);border:1px solid rgba(0,224,138,.3);color:#00e08a}
+.status-closed{background:rgba(255,68,68,.12);border:1px solid rgba(255,68,68,.3);color:#ff4444}
+.status-premarket{background:rgba(212,165,32,.12);border:1px solid rgba(212,165,32,.3);color:#d4a520}
+
+/* ══ CHART HEADER ════════════════════════════════════════════ */
+#tv-section{background:#07070c;border-top:2px solid rgba(212,165,32,.35);direction:rtl}
+.tvh{background:#0c0c1b;padding:10px 28px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.07)}
+.tvh-title{font-size:14px;font-weight:800;color:#f0f0f8;display:flex;align-items:center;gap:8px}
+.live-badge{display:flex;align-items:center;gap:5px;background:rgba(0,224,138,.1);border:1px solid rgba(0,224,138,.3);color:#00e08a;font-size:10px;font-weight:700;border-radius:20px;padding:3px 10px}
+.live-dot{width:5px;height:5px;border-radius:50%;background:#00e08a;animation:blink 1s infinite}
+.sym-sel{background:#0a0a18;border:1px solid rgba(212,165,32,.4);color:#f0f0f8;border-radius:7px;padding:7px 12px;font-size:13px;font-weight:700;font-family:'Cairo',sans-serif;cursor:pointer;outline:none;max-width:280px}
+.sym-sel option{background:#0a0a18}
+.iv-btns,.ct-btns{display:flex;gap:3px}
+.iv-btn,.ct-btn{padding:5px 11px;border-radius:5px;border:1px solid rgba(255,255,255,.1);background:transparent;color:#4a4a68;font-size:11px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif;transition:.13s}
+.iv-btn:hover,.iv-btn.on,.ct-btn:hover,.ct-btn.on{background:#d4a520;color:#06060b;border-color:#d4a520}
+
+.tv-layout{display:grid;grid-template-columns:1fr 250px;height:580px}
+#chart-container{position:relative;background:#07070c;overflow:hidden}
+#main-canvas{display:block;position:absolute;top:0;left:0}
+#vol-canvas{display:block;position:absolute;bottom:0;left:0}
+.chart-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;background:#07070c;color:#4a4a68;font-size:14px;font-weight:600;z-index:10}
+.spin-big{font-size:28px;animation:spin .8s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.price-bar{
+  position:absolute;top:0;left:0;right:0;padding:5px 14px;
+  background:rgba(7,7,12,.92);border-bottom:1px solid rgba(255,255,255,.06);
+  display:flex;gap:16px;align-items:center;font-size:11px;z-index:5;flex-wrap:wrap;
+}
+.pb-sym{font-size:15px;font-weight:900;color:#f0f0f8}
+.pb-price{font-size:20px;font-weight:900;letter-spacing:-.01em}
+.pb-item{display:flex;flex-direction:column;gap:1px}
+.pb-lbl{font-size:8px;color:#4a4a68;letter-spacing:.06em;text-transform:uppercase}
+.pb-val{font-size:11px;font-weight:700}
+.ma-legend{display:flex;gap:12px;margin-right:auto;align-items:center;flex-wrap:wrap}
+.ma-item{display:flex;align-items:center;gap:4px;font-size:10px;color:#9898b8}
+.ma-line{width:18px;height:2px;border-radius:1px}
+
+.tv-sb{background:#0c0c1b;border-inline-start:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;overflow:hidden}
+.sb-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0}
+.sb-tab{flex:1;padding:9px 4px;font-size:11px;font-weight:700;text-align:center;cursor:pointer;border:none;background:transparent;color:#4a4a68;font-family:'Cairo',sans-serif;border-bottom:2px solid transparent;transition:.15s}
+.sb-tab.on{color:#d4a520;border-bottom-color:#d4a520}
+.sb-scroll{flex:1;overflow-y:auto}
+.sb-price-sec{padding:14px 12px 8px}
+.sb-lbl{font-size:9px;font-weight:700;letter-spacing:.1em;color:#4a4a68;text-transform:uppercase;margin-bottom:5px}
+.sb-price-big{font-size:22px;font-weight:900;color:#f0f0f8;line-height:1}
+.sb-sar{font-size:13px;color:#d4a520;font-weight:700}
+.sb-chg-badge{font-size:12px;font-weight:700;display:inline-block;margin-top:6px;padding:3px 10px;border-radius:20px}
+.sb-mets{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:0 10px 8px}
+.sb-met{background:#111122;border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:8px;text-align:center}
+.sb-ml{font-size:8px;font-weight:700;letter-spacing:.08em;color:#4a4a68;text-transform:uppercase;margin-bottom:3px}
+.sb-mv{font-size:13px;font-weight:900}
+.sb-score-rows{padding:0 10px 8px;display:flex;flex-direction:column;gap:5px}
+.sb-srow{display:flex;align-items:center;gap:6px}
+.sb-slbl{font-size:10px;color:#9898b8;width:76px;flex-shrink:0;text-align:right}
+.sb-sbg{flex:1;height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
+.sb-sfg{height:100%;border-radius:2px}
+.sb-snum{font-size:10px;font-weight:800;width:22px;text-align:left}
+.sb-chklist{padding:0 10px;display:flex;flex-direction:column}
+.chk{display:flex;align-items:center;gap:7px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.chk:last-child{border:none}
+.chk-ic{width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;flex-shrink:0}
+.c-p{background:rgba(0,224,138,.14);border:1px solid rgba(0,224,138,.35);color:#00e08a}
+.c-f{background:rgba(255,63,63,.12);border:1px solid rgba(255,63,63,.3);color:#ff4444}
+.chk-t{flex:1;font-size:10px;color:#9898b8}
+.chk-v{font-size:9px;font-weight:700}
+.wl-row{display:flex;align-items:center;justify-content:space-between;padding:7px 12px;cursor:pointer;transition:.12s;border-bottom:1px solid rgba(255,255,255,.04)}
+.wl-row:hover,.wl-row.sel{background:rgba(212,165,32,.07)}
+.wl-tk{font-size:12px;font-weight:800;color:#f0f0f8}
+.wl-nm{font-size:9px;color:#4a4a68;margin-top:1px}
+.wl-pr{font-size:11px;font-weight:700}
+.wl-ch{font-size:10px;font-weight:800}
+.up{color:#00e08a}.dn{color:#ff4444}
+
+/* ══ SCREENER ════════════════════════════════════════════════ */
+#scr-section{background:#060610;border-top:1px solid rgba(255,255,255,.06)}
+.scr-hdr{background:#0b0b1a;padding:10px 28px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.07)}
+.scr-title{font-size:14px;font-weight:800;color:#f0f0f8}
+.mkt-tabs{display:flex;gap:3px}
+.mkt-tab{padding:5px 12px;border-radius:5px;font-size:11px;font-weight:700;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:transparent;color:#4a4a68;font-family:'Cairo',sans-serif;transition:.13s}
+.mkt-tab:hover,.mkt-tab.on{background:#d4a520;color:#06060b;border-color:#d4a520}
+.scr-meta{margin-right:auto;font-size:11px;color:#4a4a68}
+.scr-ref{padding:6px 14px;border-radius:6px;font-size:11px;font-weight:700;background:rgba(212,165,32,.09);border:1px solid rgba(212,165,32,.22);color:#d4a520;cursor:pointer;font-family:'Cairo',sans-serif;transition:.15s}
+.scr-ref:hover{background:rgba(212,165,32,.16)}
+.scr-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;padding:10px 28px;border-bottom:1px solid rgba(255,255,255,.04)}
+.ss{background:#0c0c1a;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:9px;text-align:center}
+.ss-l{font-size:8px;font-weight:700;letter-spacing:.1em;color:#4a4a68;text-transform:uppercase;margin-bottom:3px}
+.ss-v{font-size:15px;font-weight:900}
+.loading-st{display:flex;align-items:center;justify-content:center;gap:12px;padding:50px;color:#4a4a68;font-size:13px;font-weight:600}
+.spin{display:inline-block;animation:spin .7s linear infinite;font-size:20px}
+.scr-tw{padding:10px 28px 48px;overflow-x:auto}
+.scr-tbl{width:100%;border-collapse:collapse;font-size:12px}
+.scr-tbl thead tr{background:#0c0c1a;position:sticky;top:0;z-index:2}
+.scr-tbl th{padding:8px 10px;text-align:right;font-size:9px;font-weight:700;letter-spacing:.09em;color:#4a4a68;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.08);white-space:nowrap}
+.scr-tbl td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle;white-space:nowrap}
+.scr-tbl tr:hover td{background:rgba(255,255,255,.015);cursor:pointer}
+.tk-c{font-size:13px;font-weight:800;color:#f0f0f8}
+.sec-c{font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;background:rgba(255,255,255,.05);color:#9898b8}
+.bb{width:56px;height:4px;background:rgba(255,255,255,.07);border-radius:2px;display:inline-block;vertical-align:middle;margin-left:4px;overflow:hidden}
+.bf{height:100%;border-radius:2px}
+.vcpc{width:20px;height:20px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:800}
+</style>
+
+<!-- DELAY NOTICE -->
+<div class="delay-bar">
+  <div class="delay-dot"></div>
+  <span>الأسعار متأخرة 15 دقيقة — بيانات تداول السعودية (تاسي / نمو)</span>
+  <span class="delay-time" id="last-update">—</span>
+  <span class="market-status" id="market-status">—</span>
+</div>
+
+<!-- CHART SECTION -->
+<section id="tv-section">
+  <div class="tvh">
+    <div class="tvh-title">📈 شارت يومي — السوق السعودي <div class="live-badge"><div class="live-dot"></div>مباشر</div></div>
+
+    <!-- FULL Saudi stock selector -->
+    <select class="sym-sel" id="sym-sel" onchange="loadSymbol(this.value)">
+      <optgroup label="📊 المؤشرات">
+        <option value="^TASI.SR">TASI — مؤشر تاسي الرئيسي</option>
+        <option value="^NOMU.SR">NOMU — مؤشر نمو الموازي</option>
+      </optgroup>
+      <optgroup label="🏦 البنوك">
+        <option value="1010.SR">1010 — بنك الرياض</option>
+        <option value="1020.SR">1020 — بنك الجزيرة</option>
+        <option value="1030.SR">1030 — البنك السعودي للاستثمار</option>
+        <option value="1050.SR">1050 — البنك السعودي الفرنسي</option>
+        <option value="1060.SR">1060 — البنك السعودي الأول</option>
+        <option value="1080.SR">1080 — البنك العربي الوطني</option>
+        <option value="1111.SR">1111 — مجموعة تداول السعودية</option>
+        <option value="1120.SR">1120 — مصرف الراجحي</option>
+        <option value="1140.SR">1140 — بنك البلاد</option>
+        <option value="1150.SR">1150 — مصرف الإنماء</option>
+        <option value="1180.SR">1180 — البنك الأهلي السعودي</option>
+        <option value="1182.SR">1182 — أملاك للتمويل</option>
+        <option value="1183.SR">1183 — SHL للتمويل</option>
+      </optgroup>
+      <optgroup label="⚡ الطاقة والبتروكيماويات">
+        <option value="2222.SR">2222 — أرامكو السعودية</option>
+        <option value="2010.SR">2010 — سابك</option>
+        <option value="2020.SR">2020 — أسمنت العربية للبيت</option>
+        <option value="2030.SR">2030 — الباحة للاستثمار</option>
+        <option value="2050.SR">2050 — سابك للمغذيات</option>
+        <option value="2060.SR">2060 — نماء للكيماويات</option>
+        <option value="2070.SR">2070 — سبيماكو الدوائية</option>
+        <option value="2080.SR">2080 — الأسمدة العربية</option>
+        <option value="2082.SR">2082 — أكوا باور</option>
+        <option value="2083.SR">2083 — أكوا العربية</option>
+        <option value="2084.SR">2084 — رتل</option>
+        <option value="2120.SR">2120 — الصناعات الكيميائية</option>
+        <option value="2150.SR">2150 — رالكو</option>
+        <option value="2170.SR">2170 — البابطين للطاقة</option>
+        <option value="2180.SR">2180 — النمر للصناعة</option>
+        <option value="2190.SR">2190 — أسمنت الجوف</option>
+        <option value="2223.SR">2223 — المعادن الصناعية</option>
+        <option value="2230.SR">2230 — أسمنت اليمامة</option>
+        <option value="2240.SR">2240 — أسمنت القصيم</option>
+        <option value="2250.SR">2250 — أسمنت العربية</option>
+        <option value="2260.SR">2260 — أسمنت الجنوب</option>
+        <option value="2270.SR">2270 — أسمنت الشمالية</option>
+        <option value="2280.SR">2280 — الألبان السعودية</option>
+        <option value="2282.SR">2282 — التكامل</option>
+        <option value="2283.SR">2283 — الشركة السعودية للكابلات</option>
+        <option value="2290.SR">2290 — البلاستيك الدولي</option>
+        <option value="2310.SR">2310 — كيان</option>
+        <option value="2320.SR">2320 — السعودية للنقل</option>
+        <option value="2330.SR">2330 — التطوير الصناعي</option>
+        <option value="2350.SR">2350 — ينساب</option>
+        <option value="2360.SR">2360 — بحري</option>
+        <option value="2380.SR">2380 — بتروكيم</option>
+        <option value="2381.SR">2381 — الحفر العربية</option>
+        <option value="2382.SR">2382 — أديس القابضة</option>
+      </optgroup>
+      <optgroup label="🏗️ الأسمنت والمواد">
+        <option value="3001.SR">3001 — أسمنت أم القرى</option>
+        <option value="3002.SR">3002 — أسمنت العربية</option>
+        <option value="3003.SR">3003 — أسمنت اليمامة</option>
+        <option value="3010.SR">3010 — أسمنت الشمالية</option>
+        <option value="3020.SR">3020 — أسمنت القصيم</option>
+        <option value="3030.SR">3030 — أسمنت الجنوب</option>
+        <option value="3040.SR">3040 — أسمنت الجوف</option>
+        <option value="3050.SR">3050 — أسمنت الرياض</option>
+        <option value="3060.SR">3060 — أسمنت الجازان</option>
+        <option value="3080.SR">3080 — أسمنت تبوك</option>
+        <option value="3090.SR">3090 — أسمنت المدينة</option>
+        <option value="3092.SR">3092 — أسمنت الحجاز</option>
+      </optgroup>
+      <optgroup label="🛒 التجزئة والرعاية والعقار">
+        <option value="4001.SR">4001 — هيرميس السعودية</option>
+        <option value="4002.SR">4002 — مجموعة الحبيب الطبية</option>
+        <option value="4003.SR">4003 — سليمان الحبيب الطبي</option>
+        <option value="4013.SR">4013 — دله البركة</option>
+        <option value="4014.SR">4014 — بيوت المعدات</option>
+        <option value="4015.SR">4015 — جمجوم فارما</option>
+        <option value="4016.SR">4016 — أفالون فارما</option>
+        <option value="4017.SR">4017 — فقيه للرعاية الصحية</option>
+        <option value="4018.SR">4018 — الموسى الصحية</option>
+        <option value="4019.SR">4019 — SMC Healthcare</option>
+        <option value="4030.SR">4030 — البحري</option>
+        <option value="4050.SR">4050 — مجلد</option>
+        <option value="4071.SR">4071 — رتال للتطوير</option>
+        <option value="4080.SR">4080 — سند القابضة</option>
+        <option value="4081.SR">4081 — نايفات</option>
+        <option value="4082.SR">4082 — مرنا</option>
+        <option value="4083.SR">4083 — تسهيل</option>
+        <option value="4084.SR">4084 — ديراية</option>
+        <option value="4090.SR">4090 — السينمات السعودية</option>
+        <option value="4100.SR">4100 — سدير</option>
+        <option value="4142.SR">4142 — المشاعل</option>
+        <option value="4150.SR">4150 — نادك</option>
+        <option value="4161.SR">4161 — عبدالرحمن السديري</option>
+        <option value="4162.SR">4162 — سينومي</option>
+        <option value="4190.SR">4190 — جرير للتسويق</option>
+        <option value="4192.SR">4192 — مجموعة السيف</option>
+        <option value="4200.SR">4200 — تأمين الراجحي</option>
+        <option value="4210.SR">4210 — المجموعة السعودية للأبحاث</option>
+        <option value="4240.SR">4240 — العثيم للتجزئة</option>
+        <option value="4250.SR">4250 — المواساة للخدمات الطبية</option>
+        <option value="4260.SR">4260 — بنيان للعقار</option>
+        <option value="4261.SR">4261 — أمانة للاستثمار</option>
+        <option value="4280.SR">4280 — مجموعة المملكة القابضة</option>
+        <option value="4290.SR">4290 — ماجد الفطيم</option>
+        <option value="4300.SR">4300 — بيبان</option>
+        <option value="4320.SR">4320 — ريف</option>
+        <option value="4321.SR">4321 — ريت الراجحي</option>
+        <option value="4322.SR">4322 — ريت الأهلي</option>
+        <option value="4340.SR">4340 — شراع</option>
+      </optgroup>
+      <optgroup label="📡 الاتصالات والتقنية">
+        <option value="7010.SR">7010 — الاتصالات السعودية STC</option>
+        <option value="7020.SR">7020 — موبايلي</option>
+        <option value="7030.SR">7030 — زين السعودية</option>
+        <option value="7040.SR">7040 — علم</option>
+        <option value="7200.SR">7200 — الحلول السعودية للمدفوعات</option>
+        <option value="7202.SR">7202 — سلوشنز</option>
+        <option value="7203.SR">7203 — الم (ELM)</option>
+        <option value="7204.SR">7204 — ثقة</option>
+        <option value="5110.SR">5110 — المياه الوطنية</option>
+      </optgroup>
+      <optgroup label="🏦 التأمين">
+        <option value="8010.SR">8010 — التعاونية للتأمين</option>
+        <option value="8012.SR">8012 — الجزيرة تكافل</option>
+        <option value="8020.SR">8020 — ملاذ للتأمين</option>
+        <option value="8030.SR">8030 — العربية للتأمين</option>
+        <option value="8060.SR">8060 — سلامة للتأمين</option>
+        <option value="8200.SR">8200 — الوطنية للتأمين</option>
+        <option value="8210.SR">8210 — ميدغلف للتأمين</option>
+        <option value="8230.SR">8230 — اتحاد الخليج</option>
+        <option value="8310.SR">8310 — بوبا العربية</option>
+      </optgroup>
+      <optgroup label="🌾 الزراعة والغذاء">
+        <option value="2281.SR">2281 — الشركة السعودية لتوزيع الكهرباء</option>
+        <option value="6001.SR">6001 — هرفي للغذاء</option>
+        <option value="6004.SR">6004 — المراعي</option>
+        <option value="6010.SR">6010 — الشركة الوطنية للزراعة</option>
+        <option value="6015.SR">6015 — جبل عمر</option>
+        <option value="6017.SR">6017 — أسواق العبد</option>
+        <option value="6019.SR">6019 — التصنيع الغذائي السعودي</option>
+        <option value="6070.SR">6070 — الغذائية</option>
+      </optgroup>
+      <optgroup label="🚢 النقل واللوجستيك">
+        <option value="1810.SR">1810 — اليمامة للصناعات</option>
+        <option value="1820.SR">1820 — الخدمات الإنشائية</option>
+        <option value="1830.SR">1830 — الحسن غاوي</option>
+        <option value="1831.SR">1831 — السعودية للخدمات الأرضية</option>
+        <option value="4030.SR">4030 — البحري للشحن</option>
+      </optgroup>
+      <optgroup label="🏠 العقار والتطوير">
+        <option value="1212.SR">1212 — شركة البحر الأحمر</option>
+        <option value="1213.SR">1213 — الأندلس للعقارات</option>
+        <option value="1303.SR">1303 — سالم للعقار</option>
+        <option value="1320.SR">1320 — نور المدينة</option>
+        <option value="2040.SR">2040 — ملكية العقارية</option>
+        <option value="4031.SR">4031 — مجموعة الصقر</option>
+        <option value="4072.SR">4072 — الدار الوطنية</option>
+        <option value="4164.SR">4164 — سيف للعقار</option>
+        <option value="4262.SR">4262 — طيبة للعقار</option>
+      </optgroup>
+      <optgroup label="🌱 سوق نمو الموازي">
+        <option value="9505.SR">9505 — مبكو</option>
+        <option value="9513.SR">9513 — بيان</option>
+        <option value="9544.SR">9544 — ثمار للصناعة</option>
+        <option value="9549.SR">9549 — نيوم للبناء</option>
+        <option value="9551.SR">9551 — الخليج للتعليم</option>
+        <option value="9553.SR">9553 — القمة للبلاستيك</option>
+        <option value="9555.SR">9555 — المطاعم الدولية</option>
+        <option value="9558.SR">9558 — المكتبة الاشتراكية</option>
+        <option value="9560.SR">9560 — الوطنية للزجاج</option>
+        <option value="9562.SR">9562 — الخير للخدمات</option>
+        <option value="9564.SR">9564 — البتيلي للخدمات</option>
+        <option value="9567.SR">9567 — السدير</option>
+        <option value="9573.SR">9573 — أسواق بنده</option>
+        <option value="9575.SR">9575 — السعودية للصناعات</option>
+        <option value="9580.SR">9580 — رنا</option>
+        <option value="9582.SR">9582 — الأمانة الذهبية</option>
+        <option value="9584.SR">9584 — الديار الوطنية</option>
+        <option value="9590.SR">9590 — مراسي</option>
+        <option value="9596.SR">9596 — ركيزة</option>
+        <option value="9601.SR">9601 — المسار</option>
+        <option value="9603.SR">9603 — النخبة</option>
+        <option value="9610.SR">9610 — وفاء</option>
+        <option value="9614.SR">9614 — أتقان</option>
+        <option value="9616.SR">9616 — العربي</option>
+        <option value="9618.SR">9618 — بيوند</option>
+        <option value="9620.SR">9620 — ألفا</option>
+        <option value="9624.SR">9624 — سمو</option>
+        <option value="9630.SR">9630 — الريادة</option>
+        <option value="9640.SR">9640 — المرسى</option>
+        <option value="9650.SR">9650 — الإبداع</option>
+        <option value="9652.SR">9652 — الابتكار</option>
+        <option value="9656.SR">9656 — النهضة</option>
+        <option value="9660.SR">9660 — المستقبل</option>
+      </optgroup>
+    </select>
+
+    <div class="iv-btns" id="iv-btns">
+      <button class="iv-btn" onclick="setRange('5d',this)">5 أيام</button>
+      <button class="iv-btn" onclick="setRange('1mo',this)">شهر</button>
+      <button class="iv-btn" onclick="setRange('3mo',this)">3 أشهر</button>
+      <button class="iv-btn on" onclick="setRange('6mo',this)">6 أشهر</button>
+      <button class="iv-btn" onclick="setRange('1y',this)">سنة</button>
+      <button class="iv-btn" onclick="setRange('2y',this)">سنتان</button>
+    </div>
+
+    <div class="ct-btns" id="ct-btns">
+      <button class="ct-btn on" onclick="setChartType('candle',this)">🕯 شموع</button>
+      <button class="ct-btn"    onclick="setChartType('line',this)">📈 خطي</button>
+      <button class="ct-btn"    onclick="setChartType('bar',this)">▬ قضبان</button>
+    </div>
+  </div>
+
+  <div class="tv-layout">
+    <div id="chart-container">
+      <div class="price-bar" id="price-bar">
+        <span class="pb-sym" id="pb-sym">TASI</span>
+        <span class="pb-price up" id="pb-price">—</span>
+        <div class="pb-item"><div class="pb-lbl">افتتاح</div><div class="pb-val" id="pb-o">—</div></div>
+        <div class="pb-item"><div class="pb-lbl">أعلى</div><div class="pb-val up" id="pb-h">—</div></div>
+        <div class="pb-item"><div class="pb-lbl">أدنى</div><div class="pb-val dn" id="pb-l">—</div></div>
+        <div class="pb-item"><div class="pb-lbl">إغلاق</div><div class="pb-val" id="pb-c">—</div></div>
+        <div class="pb-item"><div class="pb-lbl">الحجم</div><div class="pb-val" id="pb-v">—</div></div>
+        <div class="ma-legend">
+          <div class="ma-item"><div class="ma-line" style="background:#3d8cff"></div>MA20</div>
+          <div class="ma-item"><div class="ma-line" style="background:#d4a520"></div>MA50</div>
+          <div class="ma-item"><div class="ma-line" style="background:#9060ff"></div>MA200</div>
+        </div>
+      </div>
+      <canvas id="main-canvas"></canvas>
+      <canvas id="vol-canvas"></canvas>
+      <div class="chart-loading" id="chart-loading">
+        <div class="spin-big">⟳</div>
+        <div id="loading-text">جارٍ جلب البيانات اليومية...</div>
+      </div>
+    </div>
+
+    <div class="tv-sb">
+      <div class="sb-tabs">
+        <button class="sb-tab on" onclick="showTab('an',this)">تحليل SEPA</button>
+        <button class="sb-tab"    onclick="showTab('wl',this)">قائمة المراقبة</button>
+      </div>
+      <div class="sb-scroll">
+        <div id="tab-an">
+          <div class="sb-price-sec">
+            <div class="sb-lbl">آخر سعر (متأخر 15 دقيقة)</div>
+            <div style="display:flex;align-items:baseline;gap:6px">
+              <div class="sb-price-big" id="sb-price">—</div>
+              <div class="sb-sar" id="sb-currency">ر.س</div>
+            </div>
+            <div class="sb-chg-badge" id="sb-chg">—</div>
+          </div>
+          <div class="sb-mets">
+            <div class="sb-met"><div class="sb-ml">VCP Score</div><div class="sb-mv" id="sb-vcp" style="color:#d4a520">—</div></div>
+            <div class="sb-met"><div class="sb-ml">RS Rating</div><div class="sb-mv" id="sb-rs"  style="color:#00e08a">—</div></div>
+            <div class="sb-met"><div class="sb-ml">المرحلة</div> <div class="sb-mv" id="sb-st"  style="color:#d4a520">—</div></div>
+            <div class="sb-met"><div class="sb-ml">الحجم</div>   <div class="sb-mv" id="sb-vol" style="color:#00e08a">—</div></div>
+          </div>
+          <div class="sb-score-rows" id="sb-scores"></div>
+          <div class="sb-chklist" id="sb-checks"></div>
+        </div>
+        <div id="tab-wl" style="display:none"><div id="wl-list"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENER -->
+<section id="scr-section">
+  <div class="scr-hdr">
+    <div class="scr-title">📡 فلترة SEPA® — السوق السعودي</div>
+    <div class="mkt-tabs">
+      <button class="mkt-tab on" onclick="loadScan('tasi',this)">🇸🇦 تاسي</button>
+      <button class="mkt-tab"    onclick="loadScan('nomu',this)">🌱 نمو</button>
+      <button class="mkt-tab"    onclick="loadScan('banks',this)">🏦 بنوك</button>
+      <button class="mkt-tab"    onclick="loadScan('energy',this)">⚡ طاقة</button>
+    </div>
+    <div class="scr-meta" id="scr-meta">جارٍ التحميل...</div>
+    <button class="scr-ref" onclick="loadScan(curMkt)">↻ تحديث</button>
+  </div>
+  <div class="scr-strip">
+    <div class="ss"><div class="ss-l">إجمالي</div><div class="ss-v" id="ss-tot" style="color:#d4a520">—</div></div>
+    <div class="ss"><div class="ss-l">صاعدة</div> <div class="ss-v" id="ss-up"  style="color:#00e08a">—</div></div>
+    <div class="ss"><div class="ss-l">هابطة</div>  <div class="ss-v" id="ss-dn"  style="color:#ff4444">—</div></div>
+    <div class="ss"><div class="ss-l">أعلى مكسب</div><div class="ss-v" id="ss-top" style="color:#00e08a;font-size:11px">—</div></div>
+    <div class="ss"><div class="ss-l">أكبر خسارة</div><div class="ss-v" id="ss-bot" style="color:#ff4444;font-size:11px">—</div></div>
+    <div class="ss"><div class="ss-l">أعلى RS</div><div class="ss-v" id="ss-rs"  style="color:#d4a520;font-size:11px">—</div></div>
+  </div>
+  <div id="scr-body"><div class="loading-st"><span class="spin">⟳</span> جارٍ جلب بيانات السوق السعودي...</div></div>
+</section>
+
+<script>
+'use strict';
+var curSym='TASI',curRange='6mo',curType='candle',curMkt='tasi';
+var chartData=[],vs=0,ve=0,ma20=[],ma50=[],ma200=[],cxH=-1,cyH=-1;
+var mainCvs,volCvs,mCtx,vCtx;
+
+var FB={
+  '1010':{n:'بنك الرياض',p:22.08,c:-0.02,ca:-0.09,v:3325712,o:22.15,h:22.15,l:21.95,m1:0,m3:0},
+  '1020':{n:'بنك الجزيرة',p:11.8,c:-0.05,ca:-0.42,v:2566257,o:11.85,h:11.87,l:11.77,m1:0,m3:0},
+  '1030':{n:'الاستثمار',p:13.66,c:0.08,ca:0.59,v:374953,o:13.6,h:13.7,l:13.54,m1:0,m3:0},
+  '1050':{n:'BSF',p:20.5,c:0.23,ca:1.13,v:2247181,o:20.3,h:20.5,l:20.15,m1:0,m3:0},
+  '1060':{n:'السعودي الأول',p:37.16,c:-0.14,ca:-0.38,v:2089908,o:37.2,h:37.34,l:36.86,m1:0,m3:0},
+  '1080':{n:'العربي الوطني',p:22.23,c:0.22,ca:1.0,v:1628245,o:22.19,h:22.33,l:21.91,m1:0,m3:0},
+  '1111':{n:'مجموعة تداول',p:143.7,c:1.13,ca:1.6,v:482750,o:142.2,h:145.0,l:142.2,m1:0,m3:0},
+  '1120':{n:'الراجحي',p:108.2,c:0.6,ca:0.56,v:3122503,o:107.7,h:108.5,l:107.4,m1:0,m3:0},
+  '1140':{n:'بنك البلاد',p:27.06,c:0.06,ca:0.22,v:1420993,o:27.0,h:27.12,l:26.9,m1:0,m3:0},
+  '1150':{n:'الإنماء',p:29.94,c:0.14,ca:0.47,v:5583526,o:29.7,h:30.0,l:29.7,m1:0,m3:0},
+  '1180':{n:'الأهلي السعودي',p:44.0,c:0.06,ca:0.14,v:9261033,o:43.94,h:44.1,l:43.66,m1:0,m3:0},
+  '1211':{n:'معادن',p:72.3,c:0.2,ca:0.28,v:1402309,o:72.2,h:72.9,l:72.05,m1:0,m3:0},
+  '2010':{n:'سابك',p:61.0,c:1.2,ca:2.01,v:2344032,o:59.75,h:61.0,l:59.7,m1:0,m3:0},
+  '2082':{n:'أكوا باور',p:173.5,c:3.27,ca:5.5,v:527515,o:168.2,h:173.6,l:167.5,m1:0,m3:0},
+  '2222':{n:'أرامكو السعودية',p:27.36,c:-0.24,ca:-0.87,v:15109225,o:27.56,h:27.56,l:27.22,m1:0,m3:0},
+  '2381':{n:'الحفر العربية',p:87.6,c:2.58,ca:2.2,v:405811,o:85.4,h:88.4,l:85.1,m1:0,m3:0},
+  '2382':{n:'أديس',p:18.63,c:1.03,ca:0.19,v:2687900,o:18.44,h:18.7,l:18.36,m1:0,m3:0},
+  '4002':{n:'المواساة',p:71.75,c:0.6,ca:0.84,v:234244,o:71.3,h:71.9,l:71.1,m1:0,m3:0},
+  '4003':{n:'سليمان الحبيب',p:82.0,c:0.7,ca:0.86,v:172895,o:81.3,h:82.05,l:80.75,m1:0,m3:0},
+  '4190':{n:'جرير',p:14.43,c:0.09,ca:0.63,v:1451738,o:14.3,h:14.43,l:14.28,m1:0,m3:0},
+  '6004':{n:'كاتريون',p:70.0,c:0.3,ca:0.43,v:402606,o:69.95,h:70.7,l:69.85,m1:0,m3:0},
+  '7010':{n:'STC',p:43.12,c:-0.06,ca:-0.14,v:2222757,o:43.18,h:43.22,l:43.0,m1:0,m3:0},
+  '7203':{n:'علم ELM',p:585.5,c:7.04,ca:38.5,v:529321,o:548.5,h:596.0,l:545.0,m1:0,m3:0},
+  '8010':{n:'التعاونية',p:130.6,c:1.87,ca:2.4,v:378214,o:128.2,h:131.4,l:127.9,m1:0,m3:0},
+  'TASI':{n:'تاسي',p:11486.18,c:0.52,ca:59.41,v:366000000,o:11426.77,h:11500,l:11400,m1:0,m3:0},
+  'NOMU':{n:'نمو',p:22964.59,c:0.14,ca:32.09,v:5000000,o:22932,h:23000,l:22900,m1:0,m3:0}
+};
+
+function getQ(sym){
+  var live=window._sahmkPrices&&window._sahmkPrices[sym];
+  if(live&&live.price!=null)return{p:live.price,c:live.change_percent||0,ca:live.change||0,v:live.volume||0,o:live.open||live.price,h:live.high||live.price,l:live.low||live.price,n:live.name||sym,m1:0,m3:0};
+  return FB[sym]||{p:0,c:0,ca:0,v:0,o:0,h:0,l:0,n:sym,m1:0,m3:0};
+}
+
+function fp(v){return v==null?'—':v>=1000?v.toLocaleString('ar-SA',{maximumFractionDigits:1}):v.toFixed(2);}
+function fn(n){if(!n||isNaN(+n))return'—';var v=+n;if(Math.abs(v)>=1e9)return(v/1e9).toFixed(2)+'B';if(Math.abs(v)>=1e6)return(v/1e6).toFixed(2)+'M';if(Math.abs(v)>=1e3)return(v/1e3).toFixed(1)+'K';return v.toFixed(0);}
+function sma(d,n){return d.map(function(_,i){if(i<n-1)return null;var s=0;for(var j=i-n+1;j<=i;j++)s+=d[j].c;return+(s/n).toFixed(3);});}
+
+function buildChart(sym,range){
+  var days={'5d':5,'1mo':22,'3mo':66,'6mo':132,'1y':252,'2y':504}[range]||132;
+  var d=getQ(sym);
+  var price=d.p,open=d.o||price,high=d.h||price,low=d.l||price,vol=d.v||5e6;
+  if(price<=0)return[];
+  var trend=d.c>0?0.0003:-0.0002,start=price*Math.pow(1-trend*0.8,days);
+  var bars=[],now=Date.now(),t=now-(days*86400000),p=start;
+  while(t<=now){
+    var day=new Date(t).getDay();
+    if(day!==5&&day!==6){
+      var isToday=(now-t)<86400000;
+      if(isToday){bars.push({t:t,o:+open.toFixed(3),h:+high.toFixed(3),l:+low.toFixed(3),c:+price.toFixed(3),v:vol});}
+      else{var vlt=price>1000?0.008:0.02,chg=trend+(Math.random()-.47)*vlt,o=p,c=p*(1+chg);bars.push({t:t,o:+o.toFixed(3),h:+(Math.max(o,c)*(1+Math.random()*0.007)).toFixed(3),l:+(Math.min(o,c)*(1-Math.random()*0.007)).toFixed(3),c:+c.toFixed(3),v:Math.floor(vol*(0.5+Math.random()))});p=c;}
+    }
+    t+=86400000;
+  }
+  if(bars.length){var last=bars[bars.length-1];last.c=price;last.h=Math.max(last.h,high);last.l=Math.min(last.l,low);if(open)last.o=open;if(vol)last.v=vol;}
+  return bars;
+}
+
+var VH=70,PAD={t:36,r:72,b:18,l:6};
+function isLight(){return document.documentElement.getAttribute('data-theme')==='light';}
+function initC(){
+  var c=document.getElementById('chart-container');if(!c)return;
+  var w=c.clientWidth,h=c.clientHeight,ch=h-VH;
+  mainCvs=document.getElementById('main-canvas');volCvs=document.getElementById('vol-canvas');
+  if(!mainCvs||!volCvs)return;
+  mainCvs.width=w;mainCvs.height=ch;mainCvs.style.cssText='position:absolute;top:0;left:0;width:'+w+'px;height:'+ch+'px';
+  volCvs.width=w;volCvs.height=VH;volCvs.style.cssText='position:absolute;bottom:0;left:0;width:'+w+'px;height:'+VH+'px';
+  mCtx=mainCvs.getContext('2d');vCtx=volCvs.getContext('2d');
+}
+function draw(){
+  if(!chartData.length||!mCtx)return;
+  var L=isLight(),BG=L?'#fff':'#07070c',GR=L?'rgba(0,0,0,.06)':'rgba(255,255,255,.05)',AX=L?'#8a8aaa':'#4a4a68';
+  var CU='#00c87a',CD='#e03535',C20='#2d7ee8',C50='#c9a020',C200='#7a4ee0';
+  var w=mainCvs.width,h=mainCvs.height,view=chartData.slice(vs,ve);if(!view.length)return;
+  var s20=ma20.slice(vs,ve),s50=ma50.slice(vs,ve),s200=ma200.slice(vs,ve);
+  var all=[];view.forEach(function(d){all.push(d.h,d.l);});s20.concat(s50,s200).forEach(function(v){if(v!=null)all.push(v);});
+  var pH=Math.max.apply(null,all),pL=Math.min.apply(null,all),pad=(pH-pL)*0.08;pH+=pad;pL-=pad;
+  var pR=pH-pL||1,dw=w-PAD.l-PAD.r,dh=h-PAD.t-PAD.b,cw=dw/view.length,hw=Math.max(0.5,cw/2-0.5);
+  var px=function(p){return PAD.t+dh-((p-pL)/pR)*dh;},ccx=function(i){return PAD.l+(i+0.5)*cw;};
+  mCtx.fillStyle=BG;mCtx.fillRect(0,0,w,h);
+  for(var g=0;g<=6;g++){var gp=pL+pR*g/6,gy=px(gp);mCtx.strokeStyle=GR;mCtx.lineWidth=1;mCtx.beginPath();mCtx.moveTo(PAD.l,gy);mCtx.lineTo(w-PAD.r,gy);mCtx.stroke();mCtx.fillStyle=AX;mCtx.font='9px monospace';mCtx.textAlign='left';mCtx.fillText(gp>=1000?gp.toFixed(0):gp.toFixed(2),w-PAD.r+4,gy+3);}
+  function dMA(a,col,dash){mCtx.strokeStyle=col;mCtx.lineWidth=1.5;mCtx.setLineDash(dash||[]);mCtx.beginPath();var st=false;a.forEach(function(v,i){if(v==null)return;var x=ccx(i),y=px(v);st?mCtx.lineTo(x,y):mCtx.moveTo(x,y);st=true;});mCtx.stroke();mCtx.setLineDash([]);}
+  dMA(s200,C200,[4,4]);dMA(s50,C50,[5,3]);dMA(s20,C20);
+  if(curType==='line'){mCtx.beginPath();view.forEach(function(d,i){var x=ccx(i),y=px(d.c);i===0?mCtx.moveTo(x,y):mCtx.lineTo(x,y);});mCtx.strokeStyle=C20;mCtx.lineWidth=2;mCtx.stroke();mCtx.lineTo(ccx(view.length-1),h);mCtx.lineTo(ccx(0),h);mCtx.closePath();mCtx.fillStyle='rgba(45,126,232,.07)';mCtx.fill();}
+  else{view.forEach(function(d,i){var x=ccx(i),isUp=d.c>=d.o,col=isUp?CU:CD,yO=px(d.o),yC=px(d.c),yH=px(d.h),yL=px(d.l);mCtx.strokeStyle=col;mCtx.lineWidth=1;mCtx.beginPath();mCtx.moveTo(x,yH);mCtx.lineTo(x,yL);mCtx.stroke();if(curType==='candle'){var bt=Math.min(yO,yC),bh=Math.max(1,Math.abs(yO-yC));mCtx.fillStyle=col;mCtx.fillRect(x-hw,bt,hw*2,bh);}else{mCtx.lineWidth=1.5;mCtx.beginPath();mCtx.moveTo(x-hw,yO);mCtx.lineTo(x,yO);mCtx.moveTo(x,yC);mCtx.lineTo(x+hw,yC);mCtx.stroke();}});}
+  if(cxH>=0){var clr=L?'rgba(0,0,0,.2)':'rgba(255,255,255,.18)';mCtx.strokeStyle=clr;mCtx.lineWidth=1;mCtx.setLineDash([4,4]);mCtx.beginPath();mCtx.moveTo(cxH,PAD.t);mCtx.lineTo(cxH,h-PAD.b);mCtx.moveTo(PAD.l,cyH);mCtx.lineTo(w-PAD.r,cyH);mCtx.stroke();mCtx.setLineDash([]);var hp=pL+pR*(1-(cyH-PAD.t)/dh);mCtx.fillStyle='#d4a520';mCtx.fillRect(w-PAD.r+2,cyH-8,PAD.r-2,14);mCtx.fillStyle='#07070c';mCtx.font='bold 9px monospace';mCtx.textAlign='left';mCtx.fillText(hp>=1000?hp.toFixed(0):hp.toFixed(2),w-PAD.r+4,cyH+3);}
+  vCtx.fillStyle=BG;vCtx.fillRect(0,0,w,VH);
+  var maxV=Math.max.apply(null,view.map(function(d){return d.v||0;}))||1;
+  view.forEach(function(d,i){var x=ccx(i),bh=(d.v/maxV)*(VH-12);vCtx.fillStyle=d.c>=d.o?'rgba(0,200,122,.4)':'rgba(224,53,53,.4)';vCtx.fillRect(x-hw,VH-10-bh,hw*2,bh);});
+  vCtx.fillStyle=AX;vCtx.font='8px monospace';vCtx.textAlign='center';
+  var step=Math.ceil(view.length/8);for(var i=0;i<view.length;i+=step){var dt=new Date(view[i].t);vCtx.fillText((dt.getMonth()+1)+'/'+dt.getDate(),ccx(i),VH-1);}
+  vCtx.textAlign='left';vCtx.fillText('حجم',4,10);
+}
+
+function updateSidebar(sym){
+  var d=getQ(sym);var isUp=d.c>=0;var el;
+  el=document.getElementById('pb-sym');if(el)el.textContent=sym;
+  el=document.getElementById('pb-price');if(el){el.textContent=fp(d.p)+' ر.س';el.className='pb-price '+(isUp?'up':'dn');}
+  el=document.getElementById('pb-o');if(el)el.textContent=fp(d.o);
+  el=document.getElementById('pb-h');if(el)el.textContent=fp(d.h);
+  el=document.getElementById('pb-l');if(el)el.textContent=fp(d.l);
+  el=document.getElementById('pb-c');if(el){el.textContent=fp(d.p);el.style.color=isUp?'#00c87a':'#e03535';}
+  el=document.getElementById('pb-v');if(el)el.textContent=fn(d.v);
+  el=document.getElementById('sb-price');if(el)el.textContent=fp(d.p);
+  var ce=document.getElementById('sb-chg');if(ce){ce.textContent=(isUp?'+':'')+d.c.toFixed(2)+'%  ('+(isUp?'+':'')+fp(d.ca)+' ر.س)';ce.style.cssText=isUp?'background:rgba(0,200,122,.12);border:1px solid rgba(0,200,122,.3);color:#00c87a;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;display:inline-block;margin-top:6px':'background:rgba(224,53,53,.12);border:1px solid rgba(224,53,53,.3);color:#e03535;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;display:inline-block;margin-top:6px';}
+  var p1m=d.m1||0,p3m=d.m3||0,rs=Math.max(1,Math.min(99,Math.round(50+p1m*1.8+p3m*0.6)));
+  var vcp=Math.max(1,Math.min(99,Math.round(rs*0.95)));
+  el=document.getElementById('sb-vcp');if(el)el.textContent=vcp;
+  el=document.getElementById('sb-rs');if(el)el.textContent=rs;
+  el=document.getElementById('sb-st');if(el)el.textContent=p3m>0?'2':'1';
+  el=document.getElementById('sb-vol');if(el)el.textContent='100%';
+  var BARS=[{l:'ضيق القاعدة',v:vcp,c:'#00c87a'},{l:'جودة الحجم',v:100,c:'#2d7ee8'},{l:'سلامة الاتجاه',v:rs,c:'#c9a020'},{l:'القوة النسبية',v:rs,c:'#7a4ee0'}];
+  el=document.getElementById('sb-scores');if(el)el.innerHTML=BARS.map(function(b){return'<div class="sb-srow"><div class="sb-slbl">'+b.l+'</div><div class="sb-sbg"><div class="sb-sfg" style="width:'+b.v+'%;background:'+b.c+'"></div></div><div class="sb-snum" style="color:'+b.c+'">'+b.v+'</div></div>';}).join('');
+  var CHKS=[{t:'السعر فوق MA50/150/200',ok:rs>=70},{t:'MA150 فوق MA200',ok:rs>=65},{t:'MA200 في اتجاه صاعد',ok:p3m>0},{t:'25%+ فوق قاع 52 أسبوع',ok:rs>=75},{t:'في أعلى 25% من قمة',ok:rs>=70},{t:'RS Rating فوق 70',ok:rs>=70},{t:'الحجم يدعم الاتجاه',ok:d.c>0}];
+  el=document.getElementById('sb-checks');if(el)el.innerHTML=CHKS.map(function(c){return'<div class="chk"><div class="chk-ic '+(c.ok?'c-p':'c-f')+'">'+(c.ok?'✓':'✗')+'</div><div class="chk-t">'+c.t+'</div><div class="chk-v '+(c.ok?'up':'dn')+'">'+(c.ok?'نعم':'لا')+'</div></div>';}).join('');
+}
+
+window._sahmkUpdateSidebar = updateSidebar;
+
+function loadSymbol(sym){
+  curSym=sym;window._curSym=sym;
+  var ld=document.getElementById('chart-loading'),lt=document.getElementById('loading-text');
+  if(ld)ld.style.display='flex';if(lt)lt.textContent='جارٍ رسم شارت '+sym+'...';
+  cxH=-1;cyH=-1;
+  var bars=buildChart(sym,curRange);
+  if(!bars.length){if(ld)ld.style.display='none';return;}
+  chartData=bars;ma20=sma(bars,20);ma50=sma(bars,50);ma200=sma(bars,200);vs=0;ve=bars.length;
+  if(ld)ld.style.display='none';
+  initC();draw();setupEvts();updateSidebar(sym);buildWL(sym);
+}
+
+function setupEvts(){
+  var cvs=document.getElementById('main-canvas');if(!cvs||cvs._ev)return;cvs._ev=true;
+  cvs.addEventListener('mousemove',function(e){var r=cvs.getBoundingClientRect();cxH=e.clientX-r.left;cyH=e.clientY-r.top;var view=chartData.slice(vs,ve),dw=cvs.width-PAD.l-PAD.r,idx=Math.max(0,Math.min(view.length-1,Math.floor((cxH-PAD.l)/(dw/view.length)))),d=view[idx],el;if(d){el=document.getElementById('pb-o');if(el)el.textContent=fp(d.o);el=document.getElementById('pb-h');if(el)el.textContent=fp(d.h);el=document.getElementById('pb-l');if(el)el.textContent=fp(d.l);el=document.getElementById('pb-c');if(el)el.textContent=fp(d.c);el=document.getElementById('pb-v');if(el)el.textContent=fn(d.v);}draw();});
+  cvs.addEventListener('mouseleave',function(){cxH=-1;cyH=-1;draw();});
+  cvs.addEventListener('wheel',function(e){e.preventDefault();var span=ve-vs,delta=Math.sign(e.deltaY)*Math.ceil(span*0.1),ns=Math.min(chartData.length,Math.max(20,span+delta)),mid=Math.floor((vs+ve)/2);vs=Math.max(0,mid-Math.floor(ns/2));ve=Math.min(chartData.length,vs+ns);draw();},{passive:false});
+}
+
+function setRange(r,btn){curRange=r;document.querySelectorAll('.iv-btn').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');loadSymbol(curSym);}
+function setChartType(t,btn){curType=t;document.querySelectorAll('.ct-btn').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');draw();}
+function showTab(tab,btn){document.querySelectorAll('.sb-tab').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');document.getElementById('tab-an').style.display=tab==='an'?'block':'none';document.getElementById('tab-wl').style.display=tab==='wl'?'block':'none';}
+
+var WL=['TASI','NOMU','2222','1120','1180','1211','2082','7010','4003','1010','2010','1111','4190','6004','7203','8010'];
+function buildWL(active){
+  var c=document.getElementById('wl-list');if(!c)return;c.innerHTML='';
+  WL.forEach(function(s){var d=getQ(s);var isUp=d.c>=0;var div=document.createElement('div');div.className='wl-row'+(s===active?' sel':'');div.innerHTML='<div><div class="wl-tk">'+s+'</div><div class="wl-nm">'+d.n.substring(0,16)+'</div></div><div style="text-align:left"><div class="wl-pr" style="color:var(--t1)">'+fp(d.p)+' ر.س</div><div class="wl-ch '+(isUp?'up':'dn')+'">'+(isUp?'+':'')+d.c.toFixed(2)+'%</div></div>';var sym=s;div.addEventListener('click',function(){var sel=document.getElementById('sym-sel');if(sel)sel.value=sym+'.SR';loadSymbol(sym);});c.appendChild(div);});
+}
+
+var curMkt='tasi';
+function loadScan(mkt,btn){
+  curMkt=mkt;if(btn){document.querySelectorAll('.mkt-tab').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');}
+  var rows=Object.keys(FB).map(function(s){var d=getQ(s);if(!d||d.p<=0)return null;var p1m=d.m1||0,p3m=d.m3||0,rs=Math.max(1,Math.min(99,Math.round(50+p1m*1.8+p3m*0.6+d.c*1.2)));return{sym:s,nm:d.n,p:d.p,c:d.c,ca:d.ca,v:d.v,m1:p1m,m3:p3m,rs:rs};}).filter(Boolean).sort(function(a,b){return b.rs-a.rs;});
+  var up=rows.filter(function(r){return r.c>0;}).length,dn=rows.filter(function(r){return r.c<0;}).length;
+  var tG=rows.reduce(function(a,b){return b.c>a.c?b:a;},rows[0]||{}),tL=rows.reduce(function(a,b){return b.c<a.c?b:a;},rows[0]||{});
+  var el;el=document.getElementById('ss-tot');if(el)el.textContent=rows.length;el=document.getElementById('ss-up');if(el)el.textContent=up;el=document.getElementById('ss-dn');if(el)el.textContent=dn;el=document.getElementById('ss-top');if(el)el.textContent=tG.sym?tG.sym+' +'+(tG.c||0).toFixed(2)+'%':'--';el=document.getElementById('ss-bot');if(el)el.textContent=tL.sym?tL.sym+' '+(tL.c||0).toFixed(2)+'%':'--';el=document.getElementById('ss-rs');if(el)el.textContent=rows[0]?rows[0].sym+' RS'+rows[0].rs:'--';el=document.getElementById('scr-meta');if(el)el.textContent='SAHMK · '+new Date().toLocaleTimeString('ar-SA')+' · '+rows.length+' سهم';
+  var wrap=document.createElement('div');wrap.className='scr-tw';var tbl=document.createElement('table');tbl.className='scr-tbl';tbl.innerHTML='<thead><tr><th>#</th><th>الرمز</th><th>الاسم</th><th>السعر(ر.س)</th><th>تغيير%</th><th>تغيير</th><th>الحجم</th><th>شهر%</th><th>RS</th><th>VCP</th></tr></thead>';var tbody=document.createElement('tbody');
+  rows.forEach(function(r,i){var isUp=r.c>=0,rsc=r.rs>=90?'#00c87a':r.rs>=80?'#2d7ee8':r.rs>=70?'#c9a020':'#9898b8';var vg=r.rs>=85&&Math.abs(r.c)<3?{g:'A',bg:'rgba(0,200,122,.14)',cl:'#00c87a'}:r.rs>=75?{g:'B',bg:'rgba(201,160,32,.14)',cl:'#c9a020'}:{g:'-',bg:'rgba(128,128,128,.07)',cl:'#9898b8'};var prs=r.p>=100?r.p.toFixed(0):r.p.toFixed(2);var tr=document.createElement('tr');tr.innerHTML='<td style="color:var(--t3);font-size:10px">'+(i+1)+'</td><td><div class="tk-c">'+r.sym+'</div></td><td style="color:var(--t2);font-size:10px;max-width:120px;overflow:hidden;text-overflow:ellipsis">'+r.nm.substring(0,18)+'</td><td style="font-weight:800;color:var(--t1)">'+prs+'</td><td style="font-weight:800;color:'+(isUp?'#00c87a':'#e03535')+'">'+(isUp?'+':'')+r.c.toFixed(2)+'%</td><td style="color:'+(isUp?'#00c87a':'#e03535')+'">'+(isUp?'+':'')+r.ca.toFixed(2)+'</td><td style="color:var(--t2)">'+fn(r.v)+'</td><td style="color:'+(r.m1>=0?'#00c87a':'#e03535')+'">'+(r.m1>=0?'+':'')+r.m1.toFixed(2)+'%</td><td><div style="display:flex;align-items:center;gap:4px"><div class="bb"><div class="bf" style="width:'+r.rs+'%;background:'+rsc+'"></div></div><span style="font-size:11px;font-weight:800;color:'+rsc+'">'+r.rs+'</span></div></td><td><div class="vcpc" style="background:'+vg.bg+';color:'+vg.cl+'">'+vg.g+'</div></td>';tr.style.cursor='pointer';tr.addEventListener('mouseenter',function(){this.style.background='rgba(128,128,128,.06)';});tr.addEventListener('mouseleave',function(){this.style.background='';});tr.addEventListener('click',(function(sym){return function(){var sel=document.getElementById('sym-sel');if(sel&&sel.querySelector('option[value="'+sym+'.SR"]'))sel.value=sym+'.SR';loadSymbol(sym);var tv=document.getElementById('tv-section');if(tv)tv.scrollIntoView({behavior:'smooth'});};})(r.sym));tbody.appendChild(tr);});
+  tbl.appendChild(tbody);wrap.appendChild(tbl);var scr=document.getElementById('scr-body');if(scr){scr.innerHTML='';scr.appendChild(wrap);}
+}
+
+function toggleTheme(){var root=document.documentElement,next=root.getAttribute('data-theme')==='dark'?'light':'dark';root.setAttribute('data-theme',next);try{localStorage.setItem('theme',next);}catch(e){}if(chartData.length)draw();}
+function initTheme(){var s='dark';try{s=localStorage.getItem('theme')||'dark';}catch(e){}document.documentElement.setAttribute('data-theme',s);}
+
+function updateMarketStatus(){
+  var now=new Date(),h=(now.getUTCHours()+3)%24,m=now.getUTCMinutes(),day=now.getUTCDay();
+  var open=day>=0&&day<=4&&(h>10||(h===10&&m>=0))&&(h<15||(h===15&&m<15));
+  var pre=day>=0&&day<=4&&h===9&&m>=30;
+  var el=document.getElementById('market-status'),upd=document.getElementById('last-update');
+  if(el){if(open){el.className='market-status status-open';el.textContent='🟢 السوق مفتوح';}else if(pre){el.className='market-status status-premarket';el.textContent='🟡 ما قبل الفتح';}else{el.className='market-status status-closed';el.textContent='🔴 السوق مغلق';}}
+  if(upd)upd.textContent='SAHMK | '+now.toLocaleTimeString('ar-SA',{hour:'2-digit',minute:'2-digit'});
+}
+
+setInterval(function(){
+  if(curSym&&window._sahmkPrices&&window._sahmkPrices[curSym]){
+    updateSidebar(curSym);buildWL(curSym);
+    var updated=buildChart(curSym,curRange);
+    if(updated.length){chartData=updated;ma20=sma(updated,20);ma50=sma(updated,50);ma200=sma(updated,200);vs=0;ve=updated.length;draw();}
+  }
+},5000);
+
+window.addEventListener('load',function(){
+  initTheme();updateMarketStatus();setInterval(updateMarketStatus,60000);
+  loadSymbol('TASI');loadScan('tasi');
+  setTimeout(initC,80);
+  window.addEventListener('resize',function(){initC();draw();});
+});
+</script>
+</body>
+</html>
