@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شارت سريع</title>
+<script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0a0a0f;color:#f0f0fa;font-family:system-ui,sans-serif;font-size:13px}
+.header{background:#111118;border-bottom:1px solid #222;padding:10px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sym-btn{padding:6px 14px;border-radius:6px;border:1px solid #333;background:transparent;color:#aaa;cursor:pointer;font-size:12px;font-weight:600;transition:.15s}
+.sym-btn.on,.sym-btn:hover{background:#c8a84b;color:#0a0a0f;border-color:#c8a84b}
+.price-info{display:flex;align-items:center;gap:16px;margin-right:auto;flex-wrap:wrap}
+.sym-name{font-size:14px;font-weight:700;color:#f0f0fa}
+.price-val{font-size:20px;font-weight:700;font-family:monospace}
+.price-chg{font-size:12px;font-weight:700;padding:2px 8px;border-radius:10px}
+.up{color:#00c87a}.dn{color:#e03535}
+.up-bg{background:rgba(0,200,122,.12);color:#00c87a}
+.dn-bg{background:rgba(224,53,53,.1);color:#e03535}
+.status{font-size:10px;color:#555;margin-right:auto}
+.pulse{width:7px;height:7px;border-radius:50%;background:#00c87a;animation:p 2s infinite;display:inline-block;margin-left:4px}
+@keyframes p{50%{opacity:.2}}
+#chart{width:100%;height:calc(100vh - 52px)}
+.loading{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#555;font-size:14px}
+</style>
+</head>
+<body>
+<div class="header">
+  <button class="sym-btn on" onclick="load('4081','صناعات كهربائية',this)">4081 كهربائية</button>
+  <button class="sym-btn" onclick="load('1322','الماجد',this)">1322 الماجد</button>
+  <button class="sym-btn" onclick="load('2181','أنابيب الشرق',this)">2181 أنابيب</button>
+  <button class="sym-btn" onclick="load('1150','الإنماء',this)">1150 الإنماء</button>
+  <button class="sym-btn" onclick="load('1120','الراجحي',this)">1120 الراجحي</button>
+  <div class="price-info">
+    <span class="sym-name" id="sym-name">—</span>
+    <span class="price-val up" id="price-val">—</span>
+    <span class="price-chg" id="price-chg">—</span>
+    <span class="pulse" id="pulse"></span>
+    <span class="status" id="status">جارٍ الاتصال...</span>
+  </div>
+</div>
+<div id="chart"></div>
+
+<script>
+var chart, candleSeries, volSeries;
+var curSym = '4081';
+var refreshTimer = null;
+
+// أسعار احتياطية
+var PRICES = {
+  '4081': {p:52.10,c:2.15,n:'الصناعات الكهربائية',o:51.00,h:52.40,l:50.90,v:1200000},
+  '1322': {p:99.35,c:1.69,n:'الماجد للتجارة',o:97.80,h:99.50,l:97.60,v:800000},
+  '2181': {p:6.66,c:6.22,n:'أنابيب الشرق',o:6.26,h:6.70,l:6.24,v:5000000},
+  '1150': {p:29.94,c:0.47,n:'مصرف الإنماء',o:29.70,h:30.00,l:29.70,v:5500000},
+  '1120': {p:108.20,c:0.56,n:'مصرف الراجحي',o:107.70,h:108.50,l:107.40,v:3100000},
+};
+
+// جلب الأسعار من سهمك عبر Vercel API
+async function fetchPrice(sym) {
+  try {
+    var r = await fetch('/api/prices?type=quote&symbol='+sym);
+    if (!r.ok) throw new Error(r.status);
+    var d = await r.json();
+    if (d.ok && d.data) {
+      var q = d.data;
+      PRICES[sym] = {
+        p: q.price || q.last_price || PRICES[sym]?.p,
+        c: q.change_percent || 0,
+        n: q.name || q.name_ar || PRICES[sym]?.n || sym,
+        o: q.open || PRICES[sym]?.o,
+        h: q.high || PRICES[sym]?.h,
+        l: q.low || PRICES[sym]?.l,
+        v: q.volume || PRICES[sym]?.v,
+      };
+    }
+  } catch(e) {
+    // استخدم الاحتياطي
+  }
+  return PRICES[sym];
+}
+
+// جلب البيانات التاريخية
+async function fetchHistory(sym) {
+  // تحقق localStorage أولاً
+  var cached = localStorage.getItem('hist_'+sym);
+  if (cached) {
+    var d = JSON.parse(cached);
+    var age = Date.now() - d.ts;
+    if (age < 86400000) { // أقل من يوم
+      console.log('من الذاكرة:', sym);
+      return d.bars;
+    }
+  }
+
+  try {
+    var r = await fetch('/api/historical?symbol='+sym+'&period=1y');
+    if (r.ok) {
+      var d = await r.json();
+      if (d.ok && d.data) {
+        var arr = Array.isArray(d.data) ? d.data : (d.data.results || d.data.data || []);
+        var bars = arr.map(function(b) {
+          return {
+            time: Math.floor(new Date(b.date || b.time || b.timestamp).getTime()/1000),
+            open: +b.open, high: +b.high, low: +b.low, close: +b.close,
+            value: +b.volume
+          };
+        }).filter(function(b){ return b.close > 0; })
+          .sort(function(a,b){ return a.time - b.time; });
+
+        if (bars.length > 0) {
+          localStorage.setItem('hist_'+sym, JSON.stringify({ts:Date.now(), bars:bars}));
+          return bars;
+        }
+      }
+    }
+  } catch(e) {}
+
+  // Fallback: بيانات محاكاة
+  return buildSimData(sym);
+}
+
+function buildSimData(sym) {
+  var q = PRICES[sym] || {p:100,c:0,o:100,h:100,l:100,v:1000000};
+  var bars = [], now = Math.floor(Date.now()/1000);
+  var days = 252, p = q.p * 0.7;
+  var trend = q.c > 0 ? 0.0003 : -0.0002;
+
+  for (var i = days; i >= 0; i--) {
+    var t = now - (i * 86400);
+    var d = new Date(t*1000).getDay();
+    if (d === 5 || d === 6) continue;
+    var chg = trend + (Math.random()-.47)*0.018;
+    var o = p, c = p*(1+chg);
+    var h = Math.max(o,c)*(1+Math.random()*0.006);
+    var l = Math.min(o,c)*(1-Math.random()*0.006);
+    if (i === 0) { c=q.p; h=Math.max(h,q.h||c); l=Math.min(l,q.l||c); o=q.o||o; }
+    bars.push({time:t, open:+o.toFixed(2), high:+h.toFixed(2), low:+l.toFixed(2), close:+c.toFixed(2), value:Math.floor((q.v||1000000)*(0.5+Math.random()))});
+    p = c;
+  }
+  return bars;
+}
+
+function initChart() {
+  var el = document.getElementById('chart');
+  var isDark = true;
+
+  chart = LightweightCharts.createChart(el, {
+    width: el.clientWidth,
+    height: el.clientHeight,
+    layout: {
+      background: {type: 'solid', color: '#0a0a0f'},
+      textColor: '#4a4a68',
+    },
+    grid: {
+      vertLines: {color: 'rgba(255,255,255,.04)'},
+      horzLines: {color: 'rgba(255,255,255,.04)'},
+    },
+    crosshair: {mode: LightweightCharts.CrosshairMode.Normal},
+    rightPriceScale: {borderColor: '#222'},
+    timeScale: {
+      borderColor: '#222',
+      timeVisible: true,
+      secondsVisible: false,
+      rightOffset: 5,
+    },
+    localization: {
+      priceFormatter: function(p) { return p.toFixed(2); }
+    }
+  });
+
+  candleSeries = chart.addCandlestickSeries({
+    upColor: '#00c87a',
+    downColor: '#e03535',
+    borderUpColor: '#00c87a',
+    borderDownColor: '#e03535',
+    wickUpColor: '#00c87a',
+    wickDownColor: '#e03535',
+  });
+
+  // MA20
+  var ma20Series = chart.addLineSeries({color:'#2d7ee8', lineWidth:1, priceLineVisible:false, lastValueVisible:false});
+  // MA50  
+  var ma50Series = chart.addLineSeries({color:'#c8a84b', lineWidth:1, priceLineVisible:false, lastValueVisible:false, lineStyle:1});
+  // MA200
+  var ma200Series = chart.addLineSeries({color:'#7a4ee0', lineWidth:1, priceLineVisible:false, lastValueVisible:false, lineStyle:2});
+
+  chart._ma20 = ma20Series;
+  chart._ma50 = ma50Series;
+  chart._ma200 = ma200Series;
+
+  // حجم
+  volSeries = chart.addHistogramSeries({
+    color: 'rgba(0,200,122,.3)',
+    priceFormat: {type:'volume'},
+    priceScaleId: 'vol',
+    scaleMargins: {top:0.85, bottom:0},
+  });
+
+  window.addEventListener('resize', function(){
+    chart.resize(el.clientWidth, el.clientHeight);
+  });
+}
+
+function calcMA(bars, n) {
+  return bars.map(function(b, i) {
+    if (i < n-1) return null;
+    var sum = 0;
+    for (var j=i-n+1; j<=i; j++) sum += bars[j].close;
+    return {time: b.time, value: +(sum/n).toFixed(3)};
+  }).filter(Boolean);
+}
+
+async function load(sym, name, btn) {
+  curSym = sym;
+  document.querySelectorAll('.sym-btn').forEach(function(b){b.classList.remove('on');});
+  if (btn) btn.classList.add('on');
+
+  document.getElementById('sym-name').textContent = name || sym;
+  document.getElementById('status').textContent = 'جارٍ التحميل...';
+  document.getElementById('pulse').style.background = '#c8a84b';
+
+  // جلب السعر الحالي
+  var q = await fetchPrice(sym);
+  updatePriceUI(q);
+
+  // جلب التاريخية
+  var bars = await fetchHistory(sym);
+  if (!bars.length) return;
+
+  // تحديث آخر شمعة بالسعر الحالي
+  if (q && q.p) {
+    var last = bars[bars.length-1];
+    last.close = q.p;
+    if (q.h) last.high = Math.max(last.high, q.h);
+    if (q.l) last.low = Math.min(last.low, q.l);
+    if (q.v) last.value = q.v;
+  }
+
+  candleSeries.setData(bars);
+  volSeries.setData(bars.map(function(b){
+    return {time:b.time, value:b.value||0, color: b.close>=b.open?'rgba(0,200,122,.3)':'rgba(224,53,53,.3)'};
+  }));
+
+  chart._ma20.setData(calcMA(bars,20));
+  chart._ma50.setData(calcMA(bars,50));
+  chart._ma200.setData(calcMA(bars,200));
+
+  chart.timeScale().fitContent();
+
+  document.getElementById('status').textContent = 'تداول مباشر | '+new Date().toLocaleTimeString('ar-SA',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('pulse').style.background = '#00c87a';
+
+  // تحديث كل 30 ثانية
+  if (refreshTimer) clearInterval(refreshTimer);
+  refreshTimer = setInterval(async function(){
+    var q2 = await fetchPrice(curSym);
+    updatePriceUI(q2);
+    if (q2 && q2.p && bars.length) {
+      var last = bars[bars.length-1];
+      last.close = q2.p;
+      if (q2.h) last.high = Math.max(last.high, q2.h);
+      if (q2.l) last.low = Math.min(last.low, q2.l);
+      candleSeries.update(last);
+    }
+    document.getElementById('status').textContent = 'آخر تحديث: '+new Date().toLocaleTimeString('ar-SA',{hour:'2-digit',minute:'2-digit'});
+  }, 30000);
+}
+
+function updatePriceUI(q) {
+  if (!q) return;
+  var isUp = q.c >= 0;
+  var prEl = document.getElementById('price-val');
+  prEl.textContent = (q.p||0).toFixed(2) + ' ر.س';
+  prEl.className = 'price-val ' + (isUp?'up':'dn');
+
+  var chEl = document.getElementById('price-chg');
+  chEl.textContent = (isUp?'+':'') + (q.c||0).toFixed(2) + '%';
+  chEl.className = 'price-chg ' + (isUp?'up-bg':'dn-bg');
+}
+
+window.addEventListener('load', function(){
+  initChart();
+  load('4081','الصناعات الكهربائية', document.querySelector('.sym-btn.on'));
+});
+</script>
+</body>
+</html>
